@@ -14,12 +14,11 @@
 
 <div id="pageLayoutDiv" class="row">
   <div class="col">*******************Page Layout Type:
-
-    {{preferences.picks_page_layout_type.name}}
+    <input type="text" value="{{preferences.picks_page_layout_type.name}}" id="prefId" name="prefId">
   </div>
 </div>
 
-<div class="row">
+<div class="row" onload="overlay()">
   <div class="col-8">
     {% for item in picks %}
     <div class="row pb-4">
@@ -31,3 +30,5 @@
   </div>
 
 {% endblock %}
+
+
