@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+{% block title %}Rules{% endblock %}
+
+
+
+{% block body %}
+
+<h2 class="mt-1 mb-4"><i class="fas fa-file-signature"></i> Rules</h2>
+
+<div class="row">   
+    
+    <div class="col-md-8">
+        
+        {% for item in items %}
+        <table class="table">
+        <tr class="table-active">
+            <th>{{item.title}}</th>
+        </tr>
+        <tr>
+            <td>{{item.message}}</td>
+        </tr>        
+        </table>
+        {% endfor %}
+        
+    </div>
+
+</div><!--END ROW-->
+
+{% endblock %}

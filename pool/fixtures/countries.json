@@ -1,0 +1,49 @@
+[{
+        "model": "pool.country",
+        "pk": 1,
+        "fields": {
+            "name": "United States",
+            "short_name": "USA"
+        }
+    },
+    {
+        "model": "pool.country",
+        "pk": 2,
+        "fields": {
+            "name": "Canada",
+            "short_name": "CA"
+        }
+    },
+    {
+        "model": "pool.country",
+        "pk": 3,
+        "fields": {
+            "name": "Mexico",
+            "short_name": "MX"
+        }
+    },
+    {
+        "model": "pool.country",
+        "pk": 4,
+        "fields": {
+            "name": "United Kingdom",
+            "short_name": "UK"
+        }
+    },
+    {
+        "model": "pool.country",
+        "pk": 5,
+        "fields": {
+            "name": "China",
+            "short_name": "CN"
+        }
+    },
+    {
+        "model": "pool.country",
+        "pk": 6,
+        "fields": {
+            "name": "Japan",
+            "short_name": "JP"
+        }
+    }
+]

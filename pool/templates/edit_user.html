@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block additionalStyles %}
+    <link rel="stylesheet" type="text/css" href="{% static '/nfl/form-validation.css' %}">
+{% endblock additionalStyles %}
+
+{% block title %}Edit Profile{% endblock title %}
+
+{% block body %}
+
+<div class="py-3 text-center">
+    <h2>{{customUser.username}}</h2>
+    <p class="lead">Edit your profile below.</p>
+  </div>
+
+  <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+        {{ form.as_p }}
+  
+        <button type="submit">Save</button>
+        <br/>
+        <a class="btn btn-secondary" href="{% url 'home' %}">Cancel</a>
+
+        <div class="media">
+        {% if customUser.favorite_team %}
+        <img src="../../static/nfl/{{customUser.favorite_team.image_name}}" class="mr-3"  alt="NFL Logo" width="106px">
+        <div class="media-body">
+          <h5 class="mt-0">{{customUser.favorite_team.name}} {{customUser.favorite_team.nick_name}}</h5>
+        </div>
+        {% endif %}
+        
+      </div><!--MEDIA-->
+
+    </form>
+
+
+{% endblock body %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+
+<h2 class="mt-1 mb-4"><i class="fas fa-users"></i> Members</h2>
+
+{% comment %} {% for item in page_obj  %}
+
+  <div class="media mt-4" style="max-width:400px;">
+    <img src="/pool{{item.image.url}}" class="mr-3" alt="No Image Found" width="64">
+    <div class="media-body">
+      <h5 class="mt-0">{{item.username}} is</h5>
+      {{item.get_full_name}}
+      <br/>
+      <a href="mailto:{{item.email}}?Subject=NFL Football Pool">{{item.email}}</a>    
+    </div>
+    {% if item.favorite_team %}
+      <img src="../../static/nfl/small/{{item.favorite_team.small_image_name}}" class="mr-3"  alt="NFL Logo" width="46" height="46">
+    {% endif %}
+    
+  </div>
+{% endfor %} {% endcomment %}
+
+<div class="row mb-3">
+  <div class="col-md-6 themed-grid-col">
+    {% for item in page_obj %}
+        <div class="media mt-4" style="max-width:400px;">
+            {% if item.favorite_team and item.image.url %}
+              <img src="/pool{{item.image.url}}" class="mr-3" alt="No Image Found" width="64" style="border:2px solid {{item.favorite_team.color_01}};">
+            {% elif item.image %}
+              <img src="/pool{{item.image.url}}" class="mr-3" alt="No Image Found" width="64" style="border:2px solid gray;">
+              {% else %}
+              <img class="mr-4" src="../../static/nfl/NFL.gif" alt="" width="64" style="border:2px solid gold;">
+            {% endif %} 
+            
+            <div class="media-body">
+              <h5 class="mt-0">{{item.username}} is</h5>
+              {{item.get_full_name}}
+              <br/>
+              <a href="mailto:{{item.email}}?Subject=NFL Football Pool">{{item.email}}</a>    
+            </div>
+            {% if item.favorite_team %}
+              <img src="../../static/nfl/small/{{item.favorite_team.small_image_name}}" class="mr-3"  alt="NFL Logo" width="46" height="46">
+            {% endif %}
+        </div><!--END MEDIA-->
+        {% if forloop.counter|divisibleby:4 %}
+        </div><!--END ROW-->
+        <div class="row"><!--START NEW ROW-->
+        {% endif %}
+    {% endfor %}
+  </div><!--END COL-->
+</div> <!--END ROW-->
+
+<br/>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+     {% endif %}
+
+    <li class="page-item"><a class="page-link" href="#">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</a></li>
+
+     {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a></li>
+     {% endif %}
+  </ul>
+</nav>
+{% endblock %}<!--END BODY BLOCK-->

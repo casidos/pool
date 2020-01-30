@@ -1,0 +1,580 @@
+[{
+        "model": "pool.team",
+        "pk": 1,
+        "fields": {
+            "name": "Arizona",
+            "abbreviation": "ARI",
+            "nick_name": "Cardinals",
+            "short_nick_name": "Cards",
+            "division_id": 8,
+            "image_name": "cardinals.gif",
+            "small_image_name": "cardinals.png",
+            "color_01": "#97233F",
+            "color_02": "#000000",
+            "color_03": "#FFB612",
+            "color_04": "",
+            "city_id": 1
+
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 2,
+        "fields": {
+            "name": "Atlanta",
+            "abbreviation": "ATL",
+            "nick_name": "Falcons",
+            "short_nick_name": "Falcons",
+            "division_id": 7,
+            "image_name": "falcons.gif",
+            "small_image_name": "falcons.png",
+            "color_01": "#A71930",
+            "color_02": "#000000",
+            "color_03": "#A5ACAF",
+            "color_04": "",
+            "city_id": 2
+
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 3,
+        "fields": {
+            "name": "Baltimore",
+            "abbreviation": "BAL",
+            "nick_name": "Ravens",
+            "short_nick_name": "Ravens",
+            "division_id": 2,
+            "image_name": "ravens.gif",
+            "small_image_name": "ravens.png",
+            "color_01": "#241773",
+            "color_02": "#9E7C0C",
+            "color_03": "#FFFFFF",
+            "color_04": "#C60C30",
+            "city_id": 3
+
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 4,
+        "fields": {
+            "name": "Buffalo",
+            "abbreviation": "BUF",
+            "nick_name": "Bills",
+            "short_nick_name": "Bills",
+            "division_id": 1,
+            "image_name": "bills.gif",
+            "small_image_name": "bills.png",
+            "color_01": "#00338D",
+            "color_02": "#FFFFFF",
+            "color_03": "#C60C30",
+            "color_04": "",
+            "city_id": 4
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 5,
+        "fields": {
+            "name": "Carolina",
+            "abbreviation": "CAR",
+            "nick_name": "Panthers",
+            "short_nick_name": "Panthers",
+            "division_id": 7,
+            "image_name": "panthers.gif",
+            "small_image_name": "panthers.png",
+            "color_01": "#0085CA",
+            "color_02": "#101820",
+            "color_03": "#BFC0BF",
+            "color_04": "",
+            "city_id": 5
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 6,
+        "fields": {
+            "name": "Chicago",
+            "abbreviation": "CHI",
+            "nick_name": "Bears",
+            "short_nick_name": "Bears",
+            "division_id": 6,
+            "image_name": "bears.gif",
+            "small_image_name": "bears.png",
+            "color_01": "#0B162A",
+            "color_02": "#FFFFFF",
+            "color_03": "#C83803",
+            "color_04": "",
+            "city_id": 6
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 7,
+        "fields": {
+            "name": "Cincinnati",
+            "abbreviation": "CIN",
+            "nick_name": "Bengals",
+            "short_nick_name": "Bengals",
+            "division_id": 2,
+            "image_name": "bengals.gif",
+            "small_image_name": "bengals.png",
+            "color_01": "#FB4F14",
+            "color_02": "#FFFFFF",
+            "color_03": "#000000",
+            "color_04": "",
+            "city_id": 7
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 8,
+        "fields": {
+            "name": "Cleveland",
+            "abbreviation": "CLE",
+            "nick_name": "Browns",
+            "short_nick_name": "Browns",
+            "division_id": 2,
+            "image_name": "browns.gif",
+            "small_image_name": "browns.png",
+            "color_01": "#FF3C00",
+            "color_02": "#FFFFFF",
+            "color_03": "#311D00",
+            "color_04": "",
+            "city_id": 8
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 9,
+        "fields": {
+            "name": "Dallas",
+            "abbreviation": "DAL",
+            "nick_name": "Cowboys",
+            "short_nick_name": "Cowboys",
+            "division_id": 5,
+            "image_name": "cowboys.gif",
+            "small_image_name": "cowboys.png",
+            "color_01": "#003594",
+            "color_02": "#041E42",
+            "color_03": "#7F9695",
+            "color_04": "",
+            "city_id": 9
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 10,
+        "fields": {
+            "name": "Denver",
+            "abbreviation": "DEN",
+            "nick_name": "Broncos",
+            "short_nick_name": "Broncos",
+            "division_id": 4,
+            "image_name": "broncos.gif",
+            "small_image_name": "broncos.png",
+            "color_01": "#FB4F14",
+            "color_02": "#FFFFFF",
+            "color_03": "#002244",
+            "color_04": "",
+            "city_id": 10
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 11,
+        "fields": {
+            "name": "Detroit",
+            "abbreviation": "DET",
+            "nick_name": "Lions",
+            "short_nick_name": "Lions",
+            "division_id": 6,
+            "image_name": "lions.gif",
+            "small_image_name": "lions.png",
+            "color_01": "#0076B6",
+            "color_02": "#FFFFFF",
+            "color_03": "#B0B7BC",
+            "color_04": "",
+            "city_id": 11
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 12,
+        "fields": {
+            "name": "Green Bay",
+            "abbreviation": "GB",
+            "nick_name": "Packers",
+            "short_nick_name": "Pack",
+            "division_id": 6,
+            "image_name": "packers.gif",
+            "small_image_name": "packers.png",
+            "color_01": "#203731",
+            "color_02": "#FFFFFF",
+            "color_03": "#FFB612",
+            "color_04": "",
+            "city_id": 12
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 13,
+        "fields": {
+            "name": "Houston",
+            "abbreviation": "HOU",
+            "nick_name": "Texans",
+            "short_nick_name": "Texans",
+            "division_id": 3,
+            "image_name": "texans.gif",
+            "small_image_name": "texans.png",
+            "color_01": "#A71930",
+            "color_02": "#FFFFFF",
+            "color_03": "#03202F",
+            "color_04": "",
+            "city_id": 13
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 14,
+        "fields": {
+            "name": "Indianapolis",
+            "abbreviation": "IND",
+            "nick_name": "Colts",
+            "short_nick_name": "Colts",
+            "division_id": 3,
+            "image_name": "colts.gif",
+            "small_image_name": "colts.png",
+            "color_01": "#002C5F",
+            "color_02": "#A2AAAD",
+            "color_03": "#FFFFFF",
+            "color_04": "",
+            "city_id": 14
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 15,
+        "fields": {
+            "name": "Jacksonville",
+            "abbreviation": "JAK",
+            "nick_name": "Jaguars",
+            "short_nick_name": "Jaguars",
+            "division_id": 3,
+            "image_name": "jaguars.gif",
+            "small_image_name": "jaguars.png",
+            "color_01": "#101820",
+            "color_02": "#006778",
+            "color_03": "#D7A22A",
+            "color_04": "",
+            "city_id": 15
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 16,
+        "fields": {
+            "name": "Kansas City",
+            "abbreviation": "KC",
+            "nick_name": "Chiefs",
+            "short_nick_name": "Chiefs",
+            "division_id": 4,
+            "image_name": "chiefs.gif",
+            "small_image_name": "chiefs.png",
+            "color_01": "#E31837",
+            "color_02": "#FFFFFF",
+            "color_03": "#FFB81C",
+            "color_04": "",
+            "city_id": 16
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 17,
+        "fields": {
+            "name": "Los Angeles",
+            "abbreviation": "LAC",
+            "nick_name": "Chargers",
+            "short_nick_name": "Bolts",
+            "division_id": 4,
+            "image_name": "chargers.gif",
+            "small_image_name": "chargers.png",
+            "color_01": "#0080C6",
+            "color_02": "#002A5E",
+            "color_03": "#FFC20E",
+            "color_04": "",
+            "city_id": 17
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 18,
+        "fields": {
+            "name": "Los Angeles",
+            "abbreviation": "LAR",
+            "nick_name": "Rams",
+            "short_nick_name": "Rams",
+            "division_id": 8,
+            "image_name": "rams.gif",
+            "small_image_name": "rams.png",
+            "color_01": "#866D4B",
+            "color_02": "#FFFFFF",
+            "color_03": "#002244",
+            "color_04": "",
+            "city_id": 17
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 19,
+        "fields": {
+            "name": "Miami",
+            "abbreviation": "MIA",
+            "nick_name": "Dolphins",
+            "short_nick_name": "Fish",
+            "division_id": 1,
+            "image_name": "dolphins.gif",
+            "small_image_name": "dolphins.png",
+            "color_01": "#008E97",
+            "color_02": "#005778",
+            "color_03": "#FC4C02",
+            "color_04": "",
+            "city_id": 18
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 20,
+        "fields": {
+            "name": "Minnesota",
+            "abbreviation": "MIN",
+            "nick_name": "Vikings",
+            "short_nick_name": "Vikings",
+            "division_id": 6,
+            "image_name": "vikings.gif",
+            "small_image_name": "vikings.png",
+            "color_01": "#4F2683",
+            "color_02": "#FFFFFF",
+            "color_03": "#FFC62F",
+            "color_04": "",
+            "city_id": 19
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 21,
+        "fields": {
+            "name": "New England",
+            "abbreviation": "NE",
+            "nick_name": "Patriots",
+            "short_nick_name": "Pats",
+            "division_id": 1,
+            "image_name": "patriots.gif",
+            "small_image_name": "patriots.png",
+            "color_01": "#002244",
+            "color_02": "#B0B7BC",
+            "color_03": "#C60C30",
+            "color_04": "",
+            "city_id": 20
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 22,
+        "fields": {
+            "name": "New Orleans",
+            "abbreviation": "NO",
+            "nick_name": "Saints",
+            "short_nick_name": "Saints",
+            "division_id": 7,
+            "image_name": "saints.gif",
+            "small_image_name": "saints.png",
+            "color_01": "#D3BC8D",
+            "color_02": "#FFFFFF",
+            "color_03": "#101820",
+            "color_04": "",
+            "city_id": 21
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 23,
+        "fields": {
+            "name": "New York",
+            "abbreviation": "NYG",
+            "nick_name": "Giants",
+            "short_nick_name": "Giants",
+            "division_id": 5,
+            "image_name": "giants.gif",
+            "small_image_name": "giants.png",
+            "color_01": "#0B2265",
+            "color_02": "#A5ACAF",
+            "color_03": "#A71930",
+            "color_04": "",
+            "city_id": 23
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 24,
+        "fields": {
+            "name": "New York",
+            "abbreviation": "NYJ",
+            "nick_name": "Jets",
+            "short_nick_name": "Jets",
+            "division_id": 1,
+            "image_name": "jets.gif",
+            "small_image_name": "jets.png",
+            "color_01": "#125740",
+            "color_02": "#000000",
+            "color_03": "#FFFFFF",
+            "color_04": "",
+            "city_id": 23
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 25,
+        "fields": {
+            "name": "Las Vegas",
+            "abbreviation": "LVR",
+            "nick_name": "Raiders",
+            "short_nick_name": "Raiders",
+            "division_id": 4,
+            "image_name": "raiders.gif",
+            "small_image_name": "raiders.png",
+            "color_01": "#000000",
+            "color_02": "#FFFFFF",
+            "color_03": "#A5ACAF",
+            "color_04": "",
+            "city_id": 32
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 26,
+        "fields": {
+            "name": "Philadelphia",
+            "abbreviation": "PHI",
+            "nick_name": "Eagles",
+            "short_nick_name": "Eagles",
+            "division_id": 5,
+            "image_name": "eagles.gif",
+            "small_image_name": "eagles.png",
+            "color_01": "#004C54",
+            "color_02": "#565A5C",
+            "color_03": "#ACC0C6",
+            "color_04": "#000000",
+            "city_id": 25
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 27,
+        "fields": {
+            "name": "Pittsburgh",
+            "abbreviation": "PIT",
+            "nick_name": "Steelers",
+            "short_nick_name": "Steelers",
+            "division_id": 2,
+            "image_name": "steelers.gif",
+            "small_image_name": "steelers.png",
+            "color_01": "#101820",
+            "color_02": "#FFFFFF",
+            "color_03": "#FFB612",
+            "color_04": "",
+            "city_id": 26
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 28,
+        "fields": {
+            "name": "San Francisco",
+            "abbreviation": "SF",
+            "nick_name": "49ers",
+            "short_nick_name": "Niners",
+            "division_id": 8,
+            "image_name": "49ers.gif",
+            "small_image_name": "49ers.png",
+            "color_01": "#AA0000",
+            "color_02": "#FFFFFF",
+            "color_03": "#B3995D",
+            "color_04": "",
+            "city_id": 27
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 29,
+        "fields": {
+            "name": "Seattle",
+            "abbreviation": "SEA",
+            "nick_name": "Seahawks",
+            "short_nick_name": "Seahawks",
+            "division_id": 8,
+            "image_name": "seahawks.gif",
+            "small_image_name": "seahawks.png",
+            "color_01": "#002244",
+            "color_02": "#FFFFFF",
+            "color_03": "#69BE28",
+            "color_04": "#A5ACAF",
+            "city_id": 28
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 30,
+        "fields": {
+            "name": "Tampa Bay",
+            "abbreviation": "TB",
+            "nick_name": "Buccaneers",
+            "short_nick_name": "Bucs",
+            "division_id": 3,
+            "image_name": "buccaneers.gif",
+            "small_image_name": "buccaneers.png",
+            "color_01": "#D50A0A",
+            "color_02": "#B1BABF",
+            "color_03": "#34302B",
+            "color_04": "#FF7900",
+            "city_id": 29
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 31,
+        "fields": {
+            "name": "Tennessee",
+            "abbreviation": "TEN",
+            "nick_name": "Titans",
+            "short_nick_name": "Titans",
+            "division_id": 3,
+            "image_name": "titans.gif",
+            "small_image_name": "titans.png",
+            "color_01": "#4B92DB",
+            "color_02": "#8A8D8F",
+            "color_03": "#0C2340",
+            "color_04": "#C8102E",
+            "city_id": 30
+        }
+    },
+    {
+        "model": "pool.team",
+        "pk": 32,
+        "fields": {
+            "name": "Washington",
+            "abbreviation": "WAS",
+            "nick_name": "Redskins",
+            "short_nick_name": "Redskins",
+            "division_id": 5,
+            "image_name": "redskins.gif",
+            "small_image_name": "redskins.png",
+            "color_01": "#773141",
+            "color_02": "#FFFFFF",
+            "color_03": "#FFB612",
+            "color_04": "",
+            "city_id": 31
+        }
+    }
+]

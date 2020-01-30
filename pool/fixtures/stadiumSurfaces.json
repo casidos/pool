@@ -1,0 +1,99 @@
+[{
+        "model": "pool.stadiumSurface",
+        "pk": 1,
+        "fields": {
+            "name": "Grass"
+        }
+    },
+    {
+        "model": "pool.stadiumSurface",
+        "pk": 2,
+        "fields": {
+            "name": "Bermuda Grass"
+        }
+    },
+    {
+        "model": "pool.stadiumSurface",
+        "pk": 3,
+        "fields": {
+            "name": "Hellas Matrix Turf"
+        }
+    },
+    {
+        "model": "pool.stadiumSurface",
+        "pk": 4,
+        "fields": {
+            "name": "FieldTurf Revolution 360"
+        }
+    },
+    {
+        "model": "pool.stadiumSurface",
+        "pk": 5,
+        "fields": {
+            "name": "Kentucky bluegrass"
+        }
+    },
+    {
+        "model": "pool.stadiumSurface",
+        "pk": 6,
+        "fields": {
+            "name": "FieldTurf Classic HD"
+        }
+    },
+    {
+        "model": "pool.stadiumSurface",
+        "pk": 7,
+        "fields": {
+            "name": "FieldTurf CORE"
+        }
+    },
+    {
+        "model": "pool.stadiumSurface",
+        "pk": 8,
+        "fields": {
+            "name": "Platinum TE Paspalum"
+        }
+    },
+    {
+        "model": "pool.stadiumSurface",
+        "pk": 9,
+        "fields": {
+            "name": "Desso GrassMaster"
+        }
+    },
+    {
+        "model": "pool.stadiumSurface",
+        "pk": 10,
+        "fields": {
+            "name": "Shaw Sports Momentum Pro"
+        }
+    },
+    {
+        "model": "pool.stadiumSurface",
+        "pk": 11,
+        "fields": {
+            "name": "UBU Sports Speed Series S5-M Synthetic Turf"
+        }
+    },
+    {
+        "model": "pool.stadiumSurface",
+        "pk": 12,
+        "fields": {
+            "name": "A-Turf Titan 50"
+        }
+    },
+    {
+        "model": "pool.stadiumSurface",
+        "pk": 13,
+        "fields": {
+            "name": "Artificial Turf"
+        }
+    },
+    {
+        "model": "pool.stadiumSurface",
+        "pk": 14,
+        "fields": {
+            "name": "Bermuda Grass / Perennial Ryegrass"
+        }
+    }
+]

@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+        <a class="navbar-brand" href="#">llsutherland.ca</a>    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">               
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == "home" %}active{% endif %}" href="{% url 'home'  %}"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == "members" %}active{% endif %}" href="{% url 'members'  %}"><i class="fas fa-users"></i> Members</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == "news" %}active{% endif %}" href="{% url 'news'  %}"><i class="fas fa-newspaper"></i> News</a>
+                </li>   
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == "rules" %}active{% endif %}" href="{% url 'rules'  %}"><i class="fas fa-file-signature"></i> Rules</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == "talk" %}active{% endif %}" href="{% url 'talk'  %}"><i class="fab fa-speakap"></i> Talk</a>
+                </li>   
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == "fees" %}active{% endif %}" href="{% url 'fees'  %}"><i class="fas fa-hand-holding-usd"></i> Fees</a>
+                </li>  
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == "picks" %}active{% endif %}" href="{% url 'picks'  %}"><i class="fas fa-clipboard-check"></i> Picks</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="{% url 'standings'  %}"><i class="fas fa-sort-amount-up"></i> Standings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == "winners" %}active{% endif %}" href="{% url 'winners'  %}"><i class="fas fa-trophy"></i> Winners</a>
+                </li>                
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">   
+                <a class="btn btn-light mr-2 my-2 my-sm-0" href=""><i class="fas fa-clock"></i> {{request.session.django_timezone}}</a>
+                <div class="dropdown dropleft pl-2 pr-2">
+                {% if current_season %}
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownSeason" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{current_season.name | truncatechars:10}}
+                    </a>
+                {% endif %}
+                {% if seasons %}
+                    <div class="dropdown-menu" aria-labelledby="dropsownSeason">
+                        {% for season in seasons %}
+                            <a class="dropdown-item" href>{{season.name}}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                    
+                    
+                </div>            
+                <div class="dropdown dropleft pl-2 pr-2">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-cog"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownProfile">
+                        <a class="dropdown-item" href="{% url 'edit_user' %}"><i class="far fa-user"></i> Profile</a>
+                        <a class="dropdown-item" href="{% url 'password_change' %}"><i class="fas fa-key"></i> Change Password</a>
+                    </div>
+                </div>
+                <a class="btn btn-light mr-2 my-2 my-sm-0" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout {{user.username}}</a>
+                {% if user.is_staff %}
+                    <div class="dropdown dropleft">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-tools"></i> Administer
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/admin"><i class="fas fa-user-lock"></i>  Site-Wide</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'admin_no_picks' %}"><i class="fas fa-bell"></i>  Send Email Reminder</a>
+                        </div>
+                    </div>
+                {% endif %}                
+            </form>
+        </div>
+    </nav>

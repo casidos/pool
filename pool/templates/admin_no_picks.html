@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin-No-Picks{% endblock %}
+
+{% block body %}
+
+{% include "page_title.html" with name="Send email reminder" %}
+
+<p class="text-right">The following users do not have picks for <strong>{{current_week.name}}</strong></p>
+<br/>
+
+{% if users %}
+    <div class="row">
+    {% for item in users %}
+        <div class="col-lg-3 col-sm-6 col-xs-12">
+            <strong>{{item.username}}</strong><p>{{item.email}}</p>
+        </div>
+        {% if forloop.counter|divisibleby:4 %}
+        </div><!--END ROW-->
+        <div class="row">
+        {% endif %}
+    {% endfor %}
+    </div>
+    <br/>
+    {% if request.user.favorite_team %}
+        <a href="{% url 'send_email_reminder' %}" class="btn btn-primary" style="background-color:{{user.favorite_team.color_03}};color:{{user.favorite_team.color_01}};border-color:{{user.favorite_team.color_01}}" href="{% url 'admin_no_picks' %}"><i class="fas fa-bell"></i>  Send</a>
+    {% else %}
+        <a href="{% url 'send_email_reminder' %}" class="btn btn-primary" href="{% url 'admin_no_picks' %}"><i class="fas fa-bell"></i>  Send</a>
+    {% endif %}
+{% else %}
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-warning"><span style="font-style:italic;"><i class="fas fa-bell"></i>  All Users have made their picks this week</span></div>
+        </div>
+    </div>
+{% endif %}
+
+
+
+
+{% endblock %}

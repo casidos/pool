@@ -1,0 +1,430 @@
+[{
+        "model": "pool.stadium",
+        "pk": 1,
+        "fields": {
+            "name": "Allegiant Stadium",
+            "capacity": 65000,
+            "surface_id": 1,
+            "year_opened": 2020,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 2,
+        "fields": {
+            "name": "Arrowhead Stadium",
+            "capacity": 76416,
+            "surface_id": 2,
+            "year_opened": 1972,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 3,
+        "fields": {
+            "name": "AT&T Stadium",
+            "capacity": 80000,
+            "surface_id": 3,
+            "year_opened": 2009,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 4,
+        "fields": {
+            "name": "Bank of America Stadium",
+            "capacity": 75523,
+            "surface_id": 2,
+            "year_opened": 1996,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 5,
+        "fields": {
+            "name": "Century Link Field",
+            "capacity": 69000,
+            "surface_id": 4,
+            "year_opened": 2002,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 6,
+        "fields": {
+            "name": "Empower Field at Mile High",
+            "capacity": 76125,
+            "surface_id": 5,
+            "year_opened": 2001,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 7,
+        "fields": {
+            "name": "FedEx Field",
+            "capacity": 82000,
+            "surface_id": 2,
+            "year_opened": 1997,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 8,
+        "fields": {
+            "name": "First Energy Stadium",
+            "capacity": 67895,
+            "surface_id": 5,
+            "year_opened": 1999,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 9,
+        "fields": {
+            "name": "Ford Field",
+            "capacity": 65000,
+            "surface_id": 6,
+            "year_opened": 2002,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 10,
+        "fields": {
+            "name": "Gillette Stadium",
+            "capacity": 66829,
+            "surface_id": 7,
+            "year_opened": 2002,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 11,
+        "fields": {
+            "name": "Hard Rock Stadium",
+            "capacity": 65326,
+            "surface_id": 8,
+            "year_opened": 1987,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 12,
+        "fields": {
+            "name": "Heinze Field",
+            "capacity": 98400,
+            "surface_id": 5,
+            "year_opened": 2001,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 13,
+        "fields": {
+            "name": "Lambeau Field",
+            "capacity": 81441,
+            "surface_id": 9,
+            "year_opened": 1957,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 14,
+        "fields": {
+            "name": "Levi's Stadium",
+            "capacity": 68500,
+            "surface_id": 14,
+            "year_opened": 2014,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 15,
+        "fields": {
+            "name": "Lincoln Field Financial",
+            "capacity": 69596,
+            "surface_id": 9,
+            "year_opened": 2003,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 16,
+        "fields": {
+            "name": "Lucas Oil Stadium",
+            "capacity": 67000,
+            "surface_id": 10,
+            "year_opened": 2008,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 17,
+        "fields": {
+            "name": "M&T Bank Stadium",
+            "capacity": 71008,
+            "surface_id": 2,
+            "year_opened": 1998,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 18,
+        "fields": {
+            "name": "Mercedes-Benz Superdome",
+            "capacity": 73208,
+            "surface_id": 4,
+            "year_opened": 1975,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 19,
+        "fields": {
+            "name": "Mercedes-Benz Stadium",
+            "capacity": 71000,
+            "surface_id": 4,
+            "year_opened": 2017,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 20,
+        "fields": {
+            "name": "MetLife Stadium",
+            "capacity": 82500,
+            "surface_id": 11,
+            "year_opened": 2010,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 21,
+        "fields": {
+            "name": "New Era Field",
+            "capacity": 71608,
+            "surface_id": 12,
+            "year_opened": 1973,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 22,
+        "fields": {
+            "name": "Nissan Stadium",
+            "capacity": 69143,
+            "surface_id": 2,
+            "year_opened": 1999,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 23,
+        "fields": {
+            "name": "NRG Stadium",
+            "capacity": 72220,
+            "surface_id": 3,
+            "year_opened": 2002,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 24,
+        "fields": {
+            "name": "Paul Brown Stadium",
+            "capacity": 65515,
+            "surface_id": 11,
+            "year_opened": 2000,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 25,
+        "fields": {
+            "name": "Raymond James Stadium",
+            "capacity": 65890,
+            "surface_id": 2,
+            "year_opened": 1998,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 26,
+        "fields": {
+            "name": "SoFi Stadium",
+            "capacity": 70240,
+            "surface_id": 13,
+            "year_opened": 2020,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 27,
+        "fields": {
+            "name": "Solider Field",
+            "capacity": 61500,
+            "surface_id": 5,
+            "year_opened": 1924,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 28,
+        "fields": {
+            "name": "State Farm Stadium",
+            "capacity": 63400,
+            "surface_id": 2,
+            "year_opened": 2006,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 29,
+        "fields": {
+            "name": "TIAA Bank Field",
+            "capacity": 69132,
+            "surface_id": 2,
+            "year_opened": 1995,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 30,
+        "fields": {
+            "name": "U.S. Bank Stadium",
+            "capacity": 66655,
+            "surface_id": 11,
+            "year_opened": 2016,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 31,
+        "fields": {
+            "name": "Estadio Azteca",
+            "capacity": 87523,
+            "surface_id": 1,
+            "year_opened": 1966,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 32,
+        "fields": {
+            "name": "Tom Benson Hall of Fame Stadium",
+            "capacity": 22364,
+            "surface_id": 6,
+            "year_opened": 2007,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 33,
+        "fields": {
+            "name": "Investors Group Field",
+            "capacity": 33500,
+            "surface_id": 1,
+            "year_opened": 2013,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 34,
+        "fields": {
+            "name": "Totenham Hotspur Stadium",
+            "capacity": 62303,
+            "surface_id": 1,
+            "year_opened": 2019,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 35,
+        "fields": {
+            "name": "Wembley Stadium",
+            "capacity": 90000,
+            "surface_id": 1,
+            "year_opened": 2007,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 36,
+        "fields": {
+            "name": "Workers Stadium",
+            "capacity": 66161,
+            "surface_id": 1,
+            "year_opened": 1959,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 37,
+        "fields": {
+            "name": "Tokyo Dome",
+            "capacity": 57000,
+            "surface_id": 1,
+            "year_opened": 1988,
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 38,
+        "fields": {
+            "name": "N/A",
+            "capacity": 0,
+            "surface_id": 1,
+            "year_opened": 0,
+            "is_active": "False"
+        }
+    },
+    {
+        "model": "pool.stadium",
+        "pk": 39,
+        "fields": {
+            "name": "Rogers Centre",
+            "capacity": 54000,
+            "surface_id": 13,
+            "year_opened": 1989,
+            "is_active": "False"
+        }
+    }
+]

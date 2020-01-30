@@ -1,0 +1,21 @@
+[{
+        "model": "pool.season",
+        "pk": 0,
+        "fields": {
+            "name": "No Season",
+            "is_active": "False",
+            "effective_date": "now()",
+            "effective_end_date": "now()"
+        }
+    },
+    {
+        "model": "pool.week",
+        "pk": 0,
+        "fields": {
+            "name": "No Week",
+            "is_active": "False",
+            "effective_date": "now()",
+            "effective_end_date": "now()"
+        }
+    }
+]

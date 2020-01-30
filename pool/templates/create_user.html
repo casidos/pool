@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block additionalStyles %}<link rel="stylesheet" type="text/css" href="{% static '/nfl/signin.css' %}">{% endblock additionalStyles %}
+{% block title %}Register{% endblock title %}
+
+{% block nav %}&nbsp;{% endblock nav %}
+
+
+{% block body %}
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p}}
+  <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Create</button>
+</form>
+{% comment %} <form method="POST">
+   {% csrf_token %}
+   <div style="text-align: center;">
+    <img class="mb-4" src="../../static/nfl/pool.gif" alt="">
+   </div>
+    
+   <h1 class="h3 mb-3 font-weight-normal">Register for llsutherland.ca Football Pool</h1>
+
+  {% if form.errors %}
+    <div class="alert alert-danger" role="alert">Registration Error. Please see below.</div>
+  {% endif %}   
+
+<div class="form-row">
+  <div class="form-group col-md-6">
+  {% if form.username.errors %}
+  <label for="{{ form.username.id_for_label }}" style="color:#dc3545;">Username</label>    
+    <input type="text" name="username" class="form-control is-invalid" aria-describedby="inputGroupPrepend3" maxlength="150" autofocus required id="id_username">
+    <div class="invalid-feedback">
+      {{ form.username.errors }}
+    </div>
+  {% else %}
+    <label for="{{ form.username.id_for_label }}">Username</label>    
+    <input type="text" name="username" class="form-control" maxlength="150" autofocus required id="id_username">
+    <small id="usernameHelp" class="form-text text-muted">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small>
+  {% endif %}    
+  </div>
+  <div class="form-group col-md-6">
+    {% if form.email.errors %}
+    <label for="{{ form.email.id_for_label }}" style="color:#dc3545;">Email</label>    
+    <input type="email" name="email" class="form-control is-invalid" aria-describedby="inputGroupPrepend4" maxlength="254" autofocus required id="id_email">
+    <div class="invalid-feedback">
+      {{ form.email.errors }}
+    </div>
+  {% else %}
+    <label for="{{ form.email.id_for_label }}">Email</label>    
+    <input type="text" name="email" class="form-control" maxlength="254" autofocus required id="id_email">
+    <small id="emailHelp" class="form-text text-muted">Enter a valid email address for us to contact you.</small>
+  {% endif %}     
+  </div>
+</div>
+
+<div class="form-row">
+<div class="form-group col-md-6">
+    <label for="id_first_name">First:</label> 
+    <input type="text" name="first_name" class="form-control" maxlength="20" required autofocus id="id_first_name">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="id_last_name">Last:</label> 
+    <input type="text" name="last_name" class="form-control" name="last_name" required autofocus id="id_last_name">
+  </div>
+</div>
+  
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="id_mobile">Mobile #:</label> 
+    <input type="text" name="mobile" class="form-control" maxlength="20" autofocus id="id_mobile">
+    <small id="mobileHelp" class="form-text text-muted">Optional. At some point, I may introduce (opt-in) text alerts. Will always remain hidden.</small>
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="id_image">Image:</label> 
+    <input type="file" name="image" class="form-control-file" name="image" accept="image/*" id="id_image">
+  </div>
+</div>
+  
+<div class="form-row">
+  <div class="form-group col-md-6">
+    {% if form.password1.errors %}
+      <label for="{{ form.password1.id_for_label }}" style="color:#dc3545;">Password</label>    
+      <input type="password" name="password1" class="form-control is-invalid" aria-describedby="inputGroupPrepend7" autocomplete="new-password" required id="id_password1">
+      <div class="invalid-feedback">
+      {{ form.password1.errors }}
+      </div>
+    {% else %}
+      <label for="{{ form.password1.id_for_label }}">Password</label>    
+      <input type="password" name="password1" class="form-control" autocomplete="new-password" required id="id_password1">
+      <small id="password1Help" class="form-text text-muted">Your password must contain at least 8 characters, can't be a commonly used password and can't be entirely numeric.</small>
+    {% endif %}     
+    </div>
+  
+    <div class="form-group col-md-6">
+    {% if form.password2.errors %}
+      <label for="{{ form.password2.id_for_label }}" style="color:#dc3545;">Confirm Password</label>    
+      <input type="password" name="password2" class="form-control is-invalid" aria-describedby="inputGroupPrepend8" autocomplete="new-password" required id="id_password2">
+      <div class="invalid-feedback">
+      {{ form.password2.errors }}
+      </div>
+    {% else %}
+      <label for="{{ form.password2.id_for_label }}">Confirm Password</label>    
+      <input type="password" name="password2" class="form-control" autocomplete="new-password" required id="id_password2">
+      <small id="password2Help" class="form-text text-muted">Enter the same password as before, for verification.</small>
+    {% endif %}     
+    </div>
+  </div>
+  
+  <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Create</button>
+  <a class="btn btn-lg btn-outline-success btn-block mt-3" href="/">Login</a>
+</form> {% endcomment %}
+{% endblock body %}
+
+
+

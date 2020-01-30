@@ -1,0 +1,23 @@
+[{
+        "model": "pool.gameStatus",
+        "pk": 1,
+        "fields": {
+            "name": "Not Yet Started"
+        }
+    },
+    {
+        "model": "pool.gameStatus",
+        "pk": 2,
+        "fields": {
+            "name": "Underway"
+        }
+    },
+    {
+        "model": "pool.gameStatus",
+        "pk": 3,
+        "fields": {
+            "name": "Complete"
+        }
+    }
+
+]

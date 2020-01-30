@@ -1,0 +1,25 @@
+<div class="btn-toolbar justify-content-end mb-3" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-2" role="group" aria-label="First group">
+    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{selected_week.week_type.name}}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <a class="dropdown-item" href="/change_week_type_for_picks/1">Preseason</a>
+      <a class="dropdown-item" href="/change_week_type_for_picks/2">Regular Season</a>
+      <a class="dropdown-item" href="/change_week_type_for_picks/3">Post-Season</a>
+    </div>
+  </div>
+  <div class="btn-group mr-2" role="group" aria-label="Second group">
+    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{selected_week.name}}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      {% for week in selected_weeks %}
+        <a class="dropdown-item" href="/change_selected_week_for_picks/{{week.id}}"> {{week.name}}</a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="btn-group" role="group" aria-label="Third group">
+    <button type="button" class="btn btn-secondary"><i class="fas fa-cog"></i></button>
+  </div>
+</div>

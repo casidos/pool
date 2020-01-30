@@ -1,0 +1,65 @@
+[{
+        "model": "pool.pickType",
+        "pk": 1,
+        "fields": {
+            "name": "No Pick",
+            "value": 0,
+            "is_active": "True",
+            "description": "You haven't made a pick yet"
+
+        }
+    },
+    {
+        "model": "pool.pickType",
+        "pk": 2,
+        "fields": {
+            "name": "Home Win",
+            "value": 1,
+            "is_active": "True",
+            "description": "If the Home Team wins, you get 1 point"
+        }
+    },
+    {
+        "model": "pool.pickType",
+        "pk": 3,
+        "fields": {
+            "name": "Visitor Win",
+            "value": 1,
+            "is_active": "True",
+            "description": "If the Visiting Team wins, you get 1 point"
+        }
+    },
+    {
+        "model": "pool.pickType",
+        "pk": 4,
+        "fields": {
+            "name": "Within Three",
+            "value": 2,
+            "is_active": "True",
+            "description": "If the score at the end of Regulation is between 1 and 3 (inclusive) [score >=1 and <=3], you get 2 points"
+        }
+    },
+    {
+        "model": "pool.pickType",
+        "pk": 5,
+        "fields": {
+            "name": "Regulation Tie",
+            "value": 3,
+            "is_active": "True",
+            "description": "If the score is tied at the end of Regulation Time, you get 3 points"
+        }
+    },
+    {
+        "model": "pool.pickType",
+        "pk": 6,
+        "fields": {
+            "name": "Overtime Tie",
+            "value": 5,
+            "is_active": "True",
+            "description": "If the game goes into Overtime and remains tied, you get 5 points"
+
+        }
+    }
+
+
+]

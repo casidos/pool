@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% block title %}Logout of llsutherland.ca{% endblock %}
+
+{% block nav %}&nbsp;{% endblock nav %}
+
+
+{% block body %}
+<h1>Logout, y'all</h1>
+ {% comment %} <form method="POST" class="form-signin">
+   {% csrf_token %}
+   <div style="text-align: center;">
+    <img class="mb-4" src="../../static/nfl/pool.gif" alt="">
+   </div>
+  <h1 class="h3 mb-3 font-weight-normal">llsutherland.ca sign in</h1>
+  <label for="id_username" class="sr-only">Username:</label> 
+  <input type="text" name="username" class="form-control" placeholder="Username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
+  <label for="id_password" class="sr-only">Password:</label> 
+  <input type="password" name="password" class="form-control" placeholder="Password" autocomplete="current-password" required id="id_password">
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  <br/>
+  <a href="{% url 'create_user' %}" class="btn btn-lg btn-outline-success btn-block" type="button">Not Registered yet?</a>
+  <br/>
+  <a href="{% url 'password_reset' %}" class="btn btn-lg btn-outline-warning btn-block" type="button">Forgot Password?</a>
+  <p class="mt-5 mb-3 text-muted">&copy; 1966-{% now "Y" %}</p>
+</form> {% endcomment %}
+{% endblock %}

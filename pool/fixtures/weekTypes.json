@@ -1,0 +1,26 @@
+[{
+        "model": "pool.weekType",
+        "pk": 1,
+        "fields": {
+            "name": "Preseason",
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.weekType",
+        "pk": 2,
+        "fields": {
+            "name": "Regular Season",
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "pool.weekType",
+        "pk": 3,
+        "fields": {
+            "name": "Post Season",
+            "is_active": "True"
+        }
+    }
+
+]

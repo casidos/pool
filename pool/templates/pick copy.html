@@ -1,0 +1,47 @@
+<div class="pt-3 pb-3 pl-3 pr-3" style="background-color:whitesmoke;">
+<table style="width:100%;border-bottom:1px solid gray;">
+<thead>
+<tr class="table-active">
+    <th colspan="4" style="padding:5px;">{{item.game.city.name}} - {{item.game.city.stadium}} - {{item.game.start_time |date:'D, M d h:i e'}}</th>
+</tr>
+</thead>
+<tr>
+    <td style="width:25%;padding-top:5px;"><img src="../../static/nfl/small/{{item.game.visiting_team.small_image_name}}" class="mr-1"  alt="NFL Logo" width="38" height="38">{{item.game.visiting_team.nick_name}}</td>
+    <td>{{item.game.visitor_score}}</td>
+    <td rowspan="2" style="vertical-align:middle;background-color:light-green;">{{item.game.game_status.name|upper}}</td>  
+    <td style="width:35%;" rowspan="2">
+        <table style="width:100%;">
+            <tr>
+            <td>
+                <div class="btn-group">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% if item.pick_type.id == 2 %}
+                            {{item.game.home_team.name}}
+                        {% elif item.pick_type.id == 3 %}
+                            {{item.game.visiting_team.name}}
+                        {% else %}
+                            {{item.pick_type.name}}
+                        {% endif %}
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#" style="color:{{item.game.visiting_team.color_01}};">{{item.game.visiting_team.name}}</a>
+                        <a class="dropdown-item" href="#" style="color:{{item.game.home_team.color_01}};">{{item.game.home_team.name}}</a>
+                        <a class="dropdown-item" href="#">Within Three</a>
+                        <a class="dropdown-item" href="#">Regulation Tie</a>
+                        <a class="dropdown-item" href="#">Overtime Tie</a>
+                    </div>
+                </div>
+            </td>
+            </tr>
+        </table>
+    </td>  
+</tr>
+<tr>
+    <td><img src="../../static/nfl/small/{{item.game.home_team.small_image_name}}" class="mr-1"  alt="NFL Logo" width="38" height="38">{{item.game.home_team.nick_name}}</td>
+    <td>{{item.game.home_score}}</td>
+</tr>
+
+<tfoot>
+</tfoot>
+</table>
+</div>

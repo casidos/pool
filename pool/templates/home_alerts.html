@@ -1,0 +1,8 @@
+{% if alerts %}
+    {% for alert in alerts %}
+        <div class="alert alert-{% if alert.alert_level.id == 1 %}success{% elif alert.alert_level.id == 2 %}warning{% else %}danger{% endif %} fade show" role="alert">
+            <i class="fas fa-exclamation-circle"></i> <strong>{{user.first_name}} {{user.last_name}}:</strong> {{ alert.message }}
+            <a href="/delete_alert/{{alert.id}}" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+        </div>
+    {% endfor %}
+{% endif %}

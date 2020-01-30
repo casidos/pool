@@ -1,0 +1,23 @@
+[{
+        "model": "pool.alertLevel",
+        "pk": 1,
+        "fields": {
+            "name": "General"
+        }
+    },
+    {
+        "model": "pool.alertLevel",
+        "pk": 2,
+        "fields": {
+            "name": "Warning"
+        }
+    },
+    {
+        "model": "pool.alertLevel",
+        "pk": 3,
+        "fields": {
+            "name": "Severe"
+        }
+    }
+
+]

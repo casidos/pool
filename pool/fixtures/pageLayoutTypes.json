@@ -1,0 +1,22 @@
+[{
+        "model": "pool.pageLayoutType",
+        "pk": 1,
+        "fields": {
+            "name": "List"
+        }
+    },
+    {
+        "model": "pool.pageLayoutType",
+        "pk": 2,
+        "fields": {
+            "name": "Grid"
+        }
+    },
+    {
+        "model": "pool.pageLayoutType",
+        "pk": 3,
+        "fields": {
+            "name": "Compact"
+        }
+    }
+]

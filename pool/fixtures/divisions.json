@@ -1,0 +1,65 @@
+[{
+        "model": "pool.division",
+        "pk": 1,
+        "fields": {
+            "name": "AFC East",
+            "conference_id": 1
+        }
+    },
+    {
+        "model": "pool.division",
+        "pk": 2,
+        "fields": {
+            "name": "AFC North",
+            "conference_id": 1
+        }
+    },
+    {
+        "model": "pool.division",
+        "pk": 3,
+        "fields": {
+            "name": "AFC South",
+            "conference_id": 1
+        }
+    },
+    {
+        "model": "pool.division",
+        "pk": 4,
+        "fields": {
+            "name": "AFC West",
+            "conference_id": 1
+        }
+    },
+    {
+        "model": "pool.division",
+        "pk": 5,
+        "fields": {
+            "name": "NFC East",
+            "conference_id": 2
+        }
+    },
+    {
+        "model": "pool.division",
+        "pk": 6,
+        "fields": {
+            "name": "NFC North",
+            "conference_id": 2
+        }
+    },
+    {
+        "model": "pool.division",
+        "pk": 7,
+        "fields": {
+            "name": "NFC South",
+            "conference_id": 2
+        }
+    },
+    {
+        "model": "pool.division",
+        "pk": 8,
+        "fields": {
+            "name": "NFC West",
+            "conference_id": 2
+        }
+    }
+]

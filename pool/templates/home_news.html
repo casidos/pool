@@ -1,0 +1,49 @@
+{% if user.favorite_team %}
+  {% if news_items.count > 0 %}
+  <div class="card" style="color:{{user.favorite_team.color_01}}">
+    <div class="card-header" style="background-color:{{user.favorite_team.color_03}}">
+      <h5><i class="fas fa-newspaper"></i> News</h5>
+    </div>
+    <div class="card-body">
+      {% for n in news_items %}
+          <h5 class="card-title" style="text-decoration:underline;color:{{user.favorite_team.color_01}}">{{n.title}}</h5>
+          <p class="card-text">{{n.message}}</p>
+          <small id="newsHelp{{n.id}}" class="form-text text-muted text-right mb-4" style="font-style:italic;">Posted by Staff: {{n.effective_date}}</small>        
+      {% endfor %}    
+    </div>
+  </div>
+  {% else %}
+  <div class="card">
+    <div class="card-header">
+      <h5>News</h5>
+    </div>
+    <div class="card-body">
+        <p id="newsHelpNone" class="form-text text-muted text-center mb-4" style="font-style:italic;">There is no news</p>
+    </div>
+  </div>
+  {% endif %}  
+{% else %}
+  {% if news_items.count > 0 %}
+  <div class="card border-secondary">
+    <div class="card-header">
+      <h5><i class="fas fa-newspaper"></i> News</h5>
+    </div>
+    <div class="card-body">
+      {% for n in news_items %}
+          <h5 class="card-title text-secondary" style="text-decoration:underline;">{{n.title}}</h5>
+          <p class="card-text">{{n.message}}</p>
+          <small id="newsHelp{{n.id}}" class="form-text text-muted text-right mb-4" style="font-style:italic;">Posted by Staff: {{n.effective_date}}</small>        
+      {% endfor %}    
+    </div>
+  </div>
+  {% else %}
+  <div class="card">
+    <div class="card-header">
+      <h5>News</h5>
+    </div>
+    <div class="card-body">
+        <p id="newsHelpNone" class="form-text text-muted text-center mb-4" style="font-style:italic;">There is no news</p>
+    </div>
+  </div>
+  {% endif %}
+{% endif %}

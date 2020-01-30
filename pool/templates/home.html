@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% block title %}Home{% endblock %}
+{% load tz %}
+{% block body %}
+
+  <p class="text-right">All times are displayed in your selected <strong>{{request.session.django_timezone}}</strong> Timezone</p>
+
+  {% include "home_alerts.html" %}
+
+  <div class="row mb-3">
+    <div class="col-md-4 themed-grid-col">
+    Weekly Standings Go Here
+    </div>
+    {% comment %} <div class="col-md-4 themed-grid-col"> {% endcomment %}
+    <div class="col-md-4">
+        {% include "home_news.html" %}
+    </div>
+    <div class="col-md-4 themed-grid-col">
+    Overall Standings Go Here
+    </div>
+  </div>
+
+{% endblock %}

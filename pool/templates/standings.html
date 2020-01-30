@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+{% block title %}Sandings{% endblock %}
+
+
+
+{% block body %}
+
+<h2 class="mt-1 mb-4"><i class="fas fa-sort-amount-up"></i> Standings</h2>
+
+<div class="row">   
+    
+    <div class="col-md-8">
+        
+        {% for item in standings %}
+        <table class="table">
+        <tr class="table-active">
+            <th>{{item.id}}</th>
+        </tr>
+        <tr>
+            <td>{{item.user.username}}</td>
+        </tr>        
+        </table>
+        {% endfor %}
+        
+    </div>
+
+</div><!--END ROW-->
+
+{% endblock %}

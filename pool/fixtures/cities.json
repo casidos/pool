@@ -1,0 +1,352 @@
+[{
+        "model": "pool.city",
+        "pk": 1,
+        "fields": {
+            "name": "Glendale",
+            "country_id": 1,
+            "stadium_id": 28
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 2,
+        "fields": {
+            "name": "Atlanta",
+            "country_id": 1,
+            "stadium_id": 19
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 3,
+        "fields": {
+            "name": "Baltimore",
+            "country_id": 1,
+            "stadium_id": 17
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 4,
+        "fields": {
+            "name": "Orchard Park",
+            "country_id": 1,
+            "stadium_id": 21
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 5,
+        "fields": {
+            "name": "Charlotte",
+            "country_id": 1,
+            "stadium_id": 4
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 6,
+        "fields": {
+            "name": "Chicago",
+            "country_id": 1,
+            "stadium_id": 27
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 7,
+        "fields": {
+            "name": "Cincinnati",
+            "country_id": 1,
+            "stadium_id": 24
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 8,
+        "fields": {
+            "name": "Cleveland",
+            "country_id": 1,
+            "stadium_id": 8
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 9,
+        "fields": {
+            "name": "Arlington",
+            "country_id": 1,
+            "stadium_id": 3
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 10,
+        "fields": {
+            "name": "Denver",
+            "country_id": 1,
+            "stadium_id": 6
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 11,
+        "fields": {
+            "name": "Detroit",
+            "country_id": 1,
+            "stadium_id": 9
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 12,
+        "fields": {
+            "name": "Green Bay",
+            "country_id": 1,
+            "stadium_id": 13
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 13,
+        "fields": {
+            "name": "Houston",
+            "country_id": 1,
+            "stadium_id": 23
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 14,
+        "fields": {
+            "name": "Indianapolis",
+            "country_id": 1,
+            "stadium_id": 16
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 15,
+        "fields": {
+            "name": "Jacksonville",
+            "country_id": 1,
+            "stadium_id": 29
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 16,
+        "fields": {
+            "name": "Kansas City",
+            "country_id": 1,
+            "stadium_id": 2
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 17,
+        "fields": {
+            "name": "Los Angeles",
+            "country_id": 1,
+            "stadium_id": 26
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 18,
+        "fields": {
+            "name": "Miami Gardens",
+            "country_id": 1,
+            "stadium_id": 11
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 19,
+        "fields": {
+            "name": "Minneapolis",
+            "country_id": 1,
+            "stadium_id": 30
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 20,
+        "fields": {
+            "name": "Foxborough",
+            "country_id": 1,
+            "stadium_id": 10
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 21,
+        "fields": {
+            "name": "New Orleans",
+            "country_id": 1,
+            "stadium_id": 18
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 22,
+        "fields": {
+            "name": "New York",
+            "country_id": 1,
+            "stadium_id": 38
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 23,
+        "fields": {
+            "name": "East Rutherford",
+            "country_id": 1,
+            "stadium_id": 20
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 24,
+        "fields": {
+            "name": "Oakland",
+            "country_id": 1,
+            "stadium_id": 38
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 25,
+        "fields": {
+            "name": "Philadelphia",
+            "country_id": 1,
+            "stadium_id": 15
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 26,
+        "fields": {
+            "name": "Pittsburgh",
+            "country_id": 1,
+            "stadium_id": 12
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 27,
+        "fields": {
+            "name": "Santa Clara",
+            "country_id": 1,
+            "stadium_id": 14
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 28,
+        "fields": {
+            "name": "Seattle",
+            "country_id": 1,
+            "stadium_id": 5
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 29,
+        "fields": {
+            "name": "Tampa Bay",
+            "country_id": 1,
+            "stadium_id": 25
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 30,
+        "fields": {
+            "name": "Nashville",
+            "country_id": 1,
+            "stadium_id": 22
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 31,
+        "fields": {
+            "name": "Landover",
+            "country_id": 1,
+            "stadium_id": 7
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 32,
+        "fields": {
+            "name": "Las Vegas",
+            "country_id": 1,
+            "stadium_id": 1
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 33,
+        "fields": {
+            "name": "Toronto",
+            "country_id": 2,
+            "stadium_id": 39
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 34,
+        "fields": {
+            "name": "London",
+            "country_id": 4,
+            "stadium_id": 35
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 35,
+        "fields": {
+            "name": "Beijing",
+            "country_id": 5,
+            "stadium_id": 36
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 36,
+        "fields": {
+            "name": "Mexico City",
+            "country_id": 3,
+            "stadium_id": 31
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 37,
+        "fields": {
+            "name": "Canton",
+            "country_id": 1,
+            "stadium_id": 32
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 38,
+        "fields": {
+            "name": "Winnipeg",
+            "country_id": 2,
+            "stadium_id": 33
+        }
+    },
+    {
+        "model": "pool.city",
+        "pk": 39,
+        "fields": {
+            "name": "Tokyo",
+            "country_id": 6,
+            "stadium_id": 37
+        }
+    }
+]

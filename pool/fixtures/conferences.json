@@ -1,0 +1,15 @@
+[{
+        "model": "pool.conference",
+        "pk": 1,
+        "fields": {
+            "name": "AFC"
+        }
+    },
+    {
+        "model": "pool.conference",
+        "pk": 2,
+        "fields": {
+            "name": "NFC"
+        }
+    }
+]
