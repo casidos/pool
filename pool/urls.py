@@ -35,6 +35,7 @@ urlpatterns = [
     path("404/", custom_page_not_found),
     path("500/", custom_server_error),
 
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
