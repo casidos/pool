@@ -36,6 +36,8 @@ urlpatterns = [
     path("500/", custom_server_error),
 
 
+
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
