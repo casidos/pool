@@ -1,0 +1,27 @@
+<div class="row m-1">
+    <div class="col-lg">
+        <div class="row p-1 mt-2 mb-2 bg-primary text-white">
+            {% if item.week %}
+                <div class="col-lg text-left">{{item.week.name}}</div>   
+            {% else %}
+                <div class="col-lg text-left">No Week</div>   
+            {% endif %}            
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                {% if item.user %}
+                    <h6>{{item.user}}</h6>
+                {% else %}
+                    <h6 class="font-italic">TBD</h6>
+                {% endif %}            
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                {% if item.message %}
+                    <p>{{item.message}}</p>
+                {% endif %}            
+            </div>
+        </div>
+    </div>
+</div>

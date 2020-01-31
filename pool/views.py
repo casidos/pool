@@ -163,9 +163,7 @@ class WinnersView(LoginRequiredMixin, ListView):
     
     def get(self, request):
 
-        args = get_current(request)
-
-        args.update({'items' : Winner.objects.all()})
+        args = get_winners_args(request, 2)
 
         return render(request, self.template_name, args)
 
@@ -186,6 +184,13 @@ def change_layout_type_for_picks(request, pk):
     selected_page_layout_type = PageLayoutType.objects.get(pk=pk)
     Preferences.objects.filter(user_id=request.user.id).update(picks_page_layout_type_id=selected_page_layout_type.id)
     return redirect('picks')
+    
+@login_required
+def change_layout_type_for_winners(request, pk):
+    template_name = 'winners.html'
+    selected_page_layout_type = PageLayoutType.objects.get(pk=pk)
+    Preferences.objects.filter(user_id=request.user.id).update(winners_page_layout_type_id=selected_page_layout_type.id)
+    return redirect('winners')
 
 @login_required
 def change_selected_week_for_picks(request, pk):    
@@ -198,6 +203,14 @@ def change_week_type_for_picks(request, pk):
     template_name = 'picks.html' 
     
     args = get_picks_args(request, 0, pk)        
+    
+    return render(request, template_name, args)
+    
+@login_required
+def change_week_type_for_winners(request, pk):
+    template_name = 'winners.html' 
+    
+    args = get_winners_args(request, pk)        
     
     return render(request, template_name, args)
 
@@ -312,12 +325,39 @@ def get_current_week(request):
 
     if not active_week.id == current_week_id:
         request.session['current_week_id'] = active_week.id
+        request.session['current_week_type_id'] = active_week.week_type.id
         return Week.objects.get(id=active_week.id)
     else:
         return Week.objects.get(id=current_week_id)
 
 def get_weeks_by_week_type(id):
     return Week.objects.filter(week_type__id = id)  
+
+def get_winners_args(request, week_type_id):
+    
+    args = get_current(request)  
+    
+    if week_type_id == '4':
+        winners = Winner.objects.all().order_by('-id')
+        args.update({'winners' : winners})
+        args.update({'week_types' : WeekType.objects.all().order_by('id')})
+        args.update({'page_layout_types': PageLayoutType.objects.all()})
+
+        return args
+        
+    week_type = WeekType.objects.get(id=week_type_id)
+
+    if not 'selected_week_type_id' in request.session:        
+        request.session['selected_week_type_id'] = week_type.id
+
+    winners = Winner.objects.filter(week__week_type_id=week_type_id)
+
+    args.update({'winners' : winners})
+    args.update({'week_types' : WeekType.objects.filter(is_active=True).order_by('id')})
+    args.update({'selected_week_type' : week_type})
+    args.update({'page_layout_types': PageLayoutType.objects.all()})
+
+    return args
 
 def get_picks_args(request, week_id, week_type_id):
 
@@ -337,16 +377,6 @@ def get_picks_args(request, week_id, week_type_id):
     games = Game.objects.filter(week_id = selected_week.id)     
 
     picks = Pick.objects.prefetch_related('game_id__week_id').filter(game_id__week_id = selected_week.id, user_id = request.user.id).order_by('game__start_time')
-
-    # picks = []
-
-    # for game in games:
-    #     try:
-    #         pick = Pick.objects.get(user_id = request.user.id, game_id = game.id)
-    #         # pick.game = game
-    #         picks.append(pick)
-    #     except Pick.DoesNotExist:
-    #         pick = None
 
     args.update({'picks' : picks})
     args.update({'pick_types' : PickType.objects.filter(id__gt = 3).order_by('id')})

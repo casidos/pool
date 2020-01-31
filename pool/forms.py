@@ -25,7 +25,7 @@ class EditUserForm(forms.ModelForm):
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'Last'}))
     email = forms.EmailField(widget=forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'Email'}))
     mobile = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'Numbers Only'}))
-
+    
     class Meta:
         model = CustomUser
         fields = ('username', 'first_name', 'last_name', 'email', 'mobile', 'image', 'favorite_team', 'timezone')
@@ -98,7 +98,6 @@ class GameForm(forms.ModelForm):
 
     home_team = forms.ModelChoiceField(queryset=Team.objects.all())
     visiting_team = forms.ModelChoiceField(queryset=Team.objects.all())
-    # city = forms.ModelChoiceField(queryset=City.objects.all())
     
     class Meta:
         model = Game

@@ -1,0 +1,27 @@
+<div class="btn-toolbar justify-content-start mb-3" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-1" role="group" aria-label="First group">
+    <button type="button" class="btn btn-secondary mr-2">Show this page as: </button>
+    <button id="btnGroupDrop6" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{preferences.winners_page_layout_type.name}}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop6">
+        {% for page_layout_type in page_layout_types %}
+            <a class="dropdown-item" href="{% url 'change_layout_type_for_winners' pk=page_layout_type.id %}">{{page_layout_type.name}}</a>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  function showElement() {     
+    var isVis = document.getElementById("pageLayoutDiv").style.display;
+    if(isVis === "block"){
+        hideElement();
+    }else{
+        document.getElementById("pageLayoutDiv").style.display = "block";
+    }
+  } 
+  function hideElement() { 
+    document.getElementById("pageLayoutDiv").style.display = "none";
+  } 
+</script>

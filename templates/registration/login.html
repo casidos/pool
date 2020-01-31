@@ -1,49 +1,58 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block additionalStyles %}<link rel="stylesheet" type="text/css" href="{% static '/nfl/signin.css' %}">{% endblock additionalStyles %}
 {% block title %}Login-llsutherland.ca{% endblock title %}
 
 {% block nav %}&nbsp;{% endblock nav %}
 
 {% block body %}
 
-<form method="POST" class="form-signin">
-   {% csrf_token %}
-   <div style="text-align: center;">
-    <img class="mb-4" src="../../static/nfl/pool.gif" alt="">
-   </div>
-  <h1 class="h3 mb-3 font-weight-normal">Please Login</h1>
-
-  {% if form.non_field_errors %}  
-      <div class="alert alert-danger" role="alert">{{form.non_field_errors}}</div>
-   {% endif %}   
-
-  {% if form.username.errors %}
-  <label for="{{ form.username.id_for_label }}" style="color:#dc3545;">Username</label>    
-    <input type="text" name="username" class="form-control is-invalid" aria-describedby="inputGroupPrepend3" maxlength="150" autofocus required id="id_username">
-    <div class="invalid-feedback">
-      {{ form.username.errors }}
-    </div>
-  {% else %}
-    <label for="{{ form.username.id_for_label }}">Username</label>    
-    <input type="text" name="username" class="form-control" maxlength="150" autofocus required id="id_username">
-    <small id="usernameHelp" class="form-text text-muted">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small>
-  {% endif %}    
-    {% if form.password.errors %}
-      <label for="{{ form.password.id_for_label }}" style="color:#dc3545;">Password</label>    
-      <input type="password" name="password" class="form-control is-invalid" aria-describedby="inputGroupPrepend7" autocomplete="new-password" required id="id_password">
-      <div class="invalid-feedback">
-      {{ form.password.errors }}
+<div class="row justify-content-center">
+  <div class="col-5">
+    <form method="POST">
+      {% csrf_token %}
+      <div style="text-align: center;">
+        <img class="mb-4" src="../../static/nfl/NFL.gif" alt="">
       </div>
-    {% else %}
-      <label for="{{ form.password.id_for_label }}">Password</label>    
-      <input type="password" name="password" class="form-control" autocomplete="Password" required id="id_password">
-    {% endif %}     
+      <h1 class="h3 mb-3 font-weight-normal text-center">llsutherland.ca Login</h1>
 
-      <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Login</button>
-      <a class="btn btn-lg btn-outline-warning btn-block mt-3" href="{% url 'password_reset' %}">Forgot Password</a>
-      <a class="btn btn-lg btn-outline-success btn-block mt-3" href="{% url 'create_user' %}">Register</a>
+      {% if form.non_field_errors %}  
+          <div class="alert alert-danger" role="alert">{{form.non_field_errors}}</div>
+      {% endif %}   
 
-</form>
+      {% if form.username.errors %}
+      <label for="{{ form.username.id_for_label }}" style="color:#dc3545;">Username</label>    
+        <input type="text" name="username" class="form-control is-invalid" aria-describedby="inputGroupPrepend3" maxlength="150" autofocus required id="id_username">
+        <div class="invalid-feedback">
+          {{ form.username.errors }}
+        </div>
+      {% else %}
+        <label for="{{ form.username.id_for_label }}">Username</label>    
+        <input type="text" name="username" class="form-control" maxlength="150" autofocus required id="id_username">
+      {% endif %}    
+        {% if form.password.errors %}
+          <label for="{{ form.password.id_for_label }}" style="color:#dc3545;">Password</label>    
+          <input type="password" name="password" class="form-control is-invalid" aria-describedby="inputGroupPrepend7" autocomplete="new-password" required id="id_password">
+          <div class="invalid-feedback">
+          {{ form.password.errors }}
+          </div>
+        {% else %}
+          <label for="{{ form.password.id_for_label }}">Password</label>    
+          <input type="password" name="password" class="form-control" autocomplete="Password" required id="id_password">
+        {% endif %}     
+
+          <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Login</button>
+
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <a class="btn btn-lg btn-outline-warning btn-block mt-3" href="{% url 'password_reset' %}">Forgot Password</a>
+            </div>
+            <div class="col-sm-6">
+              <a class="btn btn-lg btn-outline-success btn-block mt-3" href="{% url 'create_user' %}">Register</a>
+            </div>
+          </div>
+    </form>
+  </div>
+</div>
+
 {% endblock body %}
 

@@ -491,7 +491,8 @@ class PageLayoutType(models.Model):
 
 class Preferences(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    picks_page_layout_type = models.ForeignKey(PageLayoutType, on_delete=models.CASCADE)
+    picks_page_layout_type = models.ForeignKey(PageLayoutType, on_delete=models.CASCADE, related_name='picks_page_layout_type')
+    winners_page_layout_type = models.ForeignKey(PageLayoutType, on_delete=models.CASCADE, blank=False, null=False, default=1, related_name='winners_page_layout_type')
 
     def __str__(self):
         return self.picks_page_layout_type.name
@@ -536,7 +537,7 @@ def create_payer_audit_new_user(sender, **kwargs):
                 alert_new_user = Alert(user_id=saved_user.id, message='Welcome to this year\'s football pool. This is a welcome alert. Click the =>\'x\' to delete it.', alert_level_id=1)
                 alert_new_user.save()
 
-                prefs = Preferences(user_id=saved_user.id, picks_page_layout_type_id=1)
+                prefs = Preferences(user_id=saved_user.id, picks_page_layout_type_id=1, winners_page_layout_type_id=1)
                 prefs.save()
 
             except IntegrityError as ie:
@@ -790,14 +791,14 @@ def create_weeks_on_season_create(sender, instance, **kwargs):
                     create_winner_for_week(w)
                     create_game(1, w, now, 1)
 
-                    overall = Winner(message='The Overall Winner')
-                    overall.save()
-                    
-                    second_place_overall = Winner(message='Overall Second Place')
-                    second_place_overall.save()
-                    
                     third_place_overall = Winner(message='Overall Third Place')
                     third_place_overall.save()
+
+                    second_place_overall = Winner(message='Overall Second Place')
+                    second_place_overall.save()
+
+                    overall = Winner(message='The Overall Winner')
+                    overall.save()
                 
             except IntegrityError as ie:
                 print('IntegrityError creating Season')
