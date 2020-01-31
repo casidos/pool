@@ -195,16 +195,18 @@ def change_layout_type_for_winners(request, pk):
 @login_required
 def change_selected_week_for_picks(request, pk):    
     template_name = 'picks.html'      
-    args = get_picks_args(request, pk, 0)    
-    return render(request, template_name, args)
+    # args = get_picks_args(request, pk, 0)    
+    request.session['selected_week_id'] = pk
+    return redirect('picks')
 
 @login_required
 def change_week_type_for_picks(request, pk):
     template_name = 'picks.html' 
+    request.session['selected_week_type_id'] = pk
+    # args = get_picks_args(request, 0, pk)        
     
-    args = get_picks_args(request, 0, pk)        
-    
-    return render(request, template_name, args)
+    # return render(request, template_name, args)
+    return redirect('picks')
     
 @login_required
 def change_week_type_for_winners(request, pk):
@@ -311,6 +313,11 @@ def get_current_season(request):
 
 def get_selected_week(request):
     
+    if 'selected_week_type_id' in request.session:
+        selected_week_type_id = request.session['selected_week_type_id']  
+        #what to do here?
+
+
     if 'selected_week_id' in request.session:
         selected_week_id = request.session['selected_week_id']  
         return Week.objects.get(id=selected_week_id)    
