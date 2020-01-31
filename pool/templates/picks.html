@@ -12,21 +12,21 @@
   </div>
 </div>
 
-<div id="pageLayoutDiv" class="row">
-  <div class="col">*******************Page Layout Type:
-    <input type="text" value="{{preferences.picks_page_layout_type.name}}" id="prefId" name="prefId">
+<div class="row" id="pageLayoutDiv" style="display:none">
+  <div class="col">
+    {% include 'picks_prefs.html' %}
   </div>
 </div>
 
-<div class="row" onload="overlay()">
+<div class="row">
   <div class="col-8">
-    {% for item in picks %}
-    <div class="row pb-4">
-      <div class="col">
-        {% include 'pick.html' %}
-      </div>
-    </div>
-    {% endfor %}
+    {% if preferences.picks_page_layout_type.id == 1 %}
+      {% include 'pick_list.html' %}
+    {% elif preferences.picks_page_layout_type.id == 2 %}
+      {% include 'pick_grid.html' %}
+    {% else %}
+      {% include 'pick_compact.html' %}  
+    {% endif %}        
   </div>
 
 {% endblock %}

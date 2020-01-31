@@ -18,28 +18,6 @@ from django.http import HttpResponse
 from django.conf import settings
 from django.template import RequestContext
 
-def send_email_reminder(request):
-
-    emails = set()
-    
-    users = get_users_no_picks(request)
-    args = get_current(request)
-    current_week = args.get('current_week')
-
-    for u in users:
-        emails.add(u.email)
-    
-    messages = []
-
-    list_of_emails = list(emails)
-
-    for email_address in list_of_emails:
-        messages.append(('Don\'t Forget to make your Picks', '%s Kick-off is almost here. Make your picks!' % (current_week.name), settings.EMAIL_HOST_USER, [email_address]))
-    
-    send_mass_mail((messages), fail_silently=False)
-
-    return redirect('admin_no_picks')
-
 def get_users_no_picks(request):
     args = get_current(request)
     current_week = args.get('current_week')
@@ -203,6 +181,13 @@ class FeesView(LoginRequiredMixin, ListView):
         return render(request, self.template_name, args)
 
 @login_required
+def change_layout_type_for_picks(request, pk):
+    template_name = 'picks.html'
+    selected_page_layout_type = PageLayoutType.objects.get(pk=pk)
+    Preferences.objects.filter(user_id=request.user.id).update(picks_page_layout_type_id=selected_page_layout_type.id)
+    return redirect('picks')
+
+@login_required
 def change_selected_week_for_picks(request, pk):    
     template_name = 'picks.html'      
     args = get_picks_args(request, pk, 0)    
@@ -221,10 +206,15 @@ class PicksView(LoginRequiredMixin, ListView):
 
     def get(self, request):
 
-        current_week = get_current_week(request)
-        current_week_type = current_week.week_type
-        
-        args = get_picks_args(request, current_week.id, current_week_type.id) 
+        selected_week = get_selected_week(request)   
+
+        if selected_week:
+            selected_week_type = selected_week.week_type
+            args = get_picks_args(request, selected_week.id, selected_week_type.id) 
+        else:
+            current_week = get_current_week(request)
+            current_week_type = current_week.week_type
+            args = get_picks_args(request, current_week.id, current_week_type.id) 
         
         return render(request, self.template_name, args) 
 
@@ -290,10 +280,7 @@ def get_current(request):
     }
 
 def get_preferences(request):
-    x = Preferences.objects.get(user_id = request.user.id)
-    print('my prefs are: ')
-    print(x)
-    return x
+    return Preferences.objects.get(user_id = request.user.id)
 
 def get_seasons():
     return Season.objects.order_by('-effective_date')
@@ -309,6 +296,14 @@ def get_current_season(request):
     else:    
         return Season.objects.get(id=current_season_id)
 
+def get_selected_week(request):
+    
+    if 'selected_week_id' in request.session:
+        selected_week_id = request.session['selected_week_id']  
+        return Week.objects.get(id=selected_week_id)    
+    else:
+        return get_current_week(request)
+    
 def get_current_week(request):
     
     active_week = Week.objects.get(is_active=True)    
@@ -329,26 +324,19 @@ def get_picks_args(request, week_id, week_type_id):
     args = get_current(request)
     
     if week_id == 0:#we are changing the week type
-        print('we are changing the week TYPE')
         selected_week_type = WeekType.objects.get(id = week_type_id)
         selected_week_type_id = selected_week_type.id
         selected_weeks = Week.objects.filter(week_type_id = selected_week_type_id)
         selected_week = selected_weeks[0]
-        print('selected week is now: ')
-        print(selected_week)
     else:
-        print('CHANGING the week now')
-        print('selected_week issssss: ')
-        selected_week = Week.objects.get(id = week_id)             
-        print(selected_week)
-        print('selected week type: ')
+        selected_week = Week.objects.get(id = week_id)
+        request.session['selected_week_id'] = selected_week.id
         selected_week_type = selected_week.week_type
-        print(selected_week_type)
         selected_weeks = get_weeks_by_week_type(selected_week_type.id)       
 
     games = Game.objects.filter(week_id = selected_week.id)     
 
-    picks = Pick.objects.prefetch_related('game_id__week_id').filter(game_id__week_id = selected_week.id, user_id = request.user.id)
+    picks = Pick.objects.prefetch_related('game_id__week_id').filter(game_id__week_id = selected_week.id, user_id = request.user.id).order_by('game__start_time')
 
     # picks = []
 
@@ -364,16 +352,28 @@ def get_picks_args(request, week_id, week_type_id):
     args.update({'pick_types' : PickType.objects.filter(id__gt = 3).order_by('id')})
     args.update({'selected_week' : selected_week})
     args.update({'selected_weeks' : selected_weeks})
-
-    print(args['selected_week'])
+    args.update({'page_layout_types': PageLayoutType.objects.all()})
 
     return args;
-   
 
-# def error_404(request, exception):
-#         data = {}
-#         return render(request,'pool/404.html', data)
+def send_email_reminder(request):
 
-# def error_500(request):
-#         data = {}
-#         return render(request,'pool/500.html', data)
+    emails = set()
+    
+    users = get_users_no_picks(request)
+    args = get_current(request)
+    current_week = args.get('current_week')
+
+    for u in users:
+        emails.add(u.email)
+    
+    messages = []
+
+    list_of_emails = list(emails)
+
+    for email_address in list_of_emails:
+        messages.append(('Don\'t Forget to make your Picks', '%s Kick-off is almost here. Make your picks!' % (current_week.name), settings.EMAIL_HOST_USER, [email_address]))
+    
+    send_mass_mail((messages), fail_silently=False)
+
+    return redirect('admin_no_picks')

@@ -489,7 +489,6 @@ class PageLayoutType(models.Model):
     def __str__(self):
         return self.name
 
-
 class Preferences(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     picks_page_layout_type = models.ForeignKey(PageLayoutType, on_delete=models.CASCADE)

@@ -1,11 +1,20 @@
 {% load humanize %}
-<div class="row" style="border-bottom:1px solid whitesmoke;border-right:1px solid whitesmoke;">
+{% for item in picks %}
+<div class="row">
     <div class="col-lg">
-        <div class="row table-active p-1">
-            <div class="col-lg">{{item.game.city.name}} - {{item.game.city.stadium}} [field: {{item.game.city.stadium.surface.name}}, capacity: {{item.game.city.stadium.capacity|intcomma}}] - {{item.game.start_time |date:'D, M d h:i e'}}
+        {% ifchanged item.game.start_time %}
+            <div class="row p-1 mt-2 mb-2 bg-primary text-white">
+                <div class="col-lg text-left">
+                    <span>{{item.game.start_time |date:'l, M d g:i a'}}</span>
+                    <span>{{item.game.start_time |date:'e'}}</span>
+                </div>
             </div>
+        {% endifchanged %}
+        <div class="row table-active p-1">
+            <div class="col-lg text-left">{{item.game.city.name}} - {{item.game.city.stadium}}</div>
+            <div class="col-lg text-right">[field: {{item.game.city.stadium.surface.name}}, capacity: {{item.game.city.stadium.capacity|intcomma}}]</div>
         </div>
-        <div class="row align-items-center">
+        <div class="row align-items-center mb-2">
             <div class="col-4">
                 <div class="row align-items-center">
                     <div class="col-md mt-2">
@@ -25,16 +34,6 @@
                 </div>
             </div>
             <div class="col-3">
-                {% comment %} {% if item.game.is_complete and item.game.is_within_three %}
-                    Within 3
-                {% endif %}
-                {% if item.game.is_complete and item.game.is_reg_tie %}
-                    <strong>Reg Tie</strong>
-                {% endif %}
-                {% if item.game.is_complete and item.game.is_overtime_tie %}
-                    <strong>OT Tie</strong>
-
-                {% endif %} {% endcomment %}
                 {{item.game.game_status.name|upper}}
             </div>
             <div class="col-3">
@@ -49,32 +48,23 @@
                                 <img src="../../static/nfl/small/{{item.game.visiting_team.small_image_name}}" class="mr-1"  alt="NFL Logo" width="20" height="20"> {{item.game.visiting_team.name}}
                             </button>
                         {% elif item.pick_type.id == 4 %}
-                            <button class="btn btn-warning btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-outline-warning btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Within Three
                             </button>
                         {% elif item.pick_type.id == 5 %}
-                            <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-outline-success btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Regulation Tie
                             </button>
                         {% elif item.pick_type.id == 6 %}
-                            <button class="btn btn-danger btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-outline-danger btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Overtime Tie
                             </button>
                         {% else %}
-                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 No Pick
 
                             </button>
                         {% endif %}
-                        {% comment %} <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {% if item.pick_type.id == 2 %}
-                                <img src="../../static/nfl/small/{{item.game.home_team.small_image_name}}" class="mr-1"  alt="NFL Logo" width="20" height="20"> {{item.game.home_team.name}}
-                            {% elif item.pick_type.id == 3 %}
-                                <img src="../../static/nfl/small/{{item.game.visiting_team.small_image_name}}" class="mr-1"  alt="NFL Logo" width="20" height="20"> {{item.game.visiting_team.name}}
-                            {% else %}
-                                {{item.pick_type.name}}
-                            {% endif %}
-                        </button> {% endcomment %}
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="/make_pick/{{item.id}}/3" style="color:{{item.game.visiting_team.color_01}};">{{item.game.visiting_team.name}}</a>
                             <a class="dropdown-item" href="/make_pick/{{item.id}}/2" style="color:{{item.game.home_team.color_01}};">{{item.game.home_team.name}}</a>
@@ -107,17 +97,6 @@
                 
             <div>
         </div>
-    </div>
-    {% comment %} <div class="col-sm">
-      One of four columns
-    </div>
-    <div class="col-sm">
-      One of four columns
-    </div>
-    <div class="col-sm">
-      One of four columns
-    </div>
-    <div class="col-sm">
-      One of four columns
-    </div> {% endcomment %}
+    </div>    
   </div>
+  {% endfor %}
