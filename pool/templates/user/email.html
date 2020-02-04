@@ -1,0 +1,11 @@
+{% if form.email.errors %}
+    <label for="{{ form.email.id_for_label }}" style="color:#dc3545;">Email</label>    
+    <input type="email" name="email" class="form-control is-invalid" aria-describedby="inputGroupPrepend4" maxlength="254" autofocus required id="id_email">
+    <div class="invalid-feedback">
+        {{ form.email.errors }}
+    </div>
+{% else %}
+    <label for="{{ form.email.id_for_label }}">Email</label>    
+    <input type="text" name="email" class="form-control" maxlength="254" autofocus required id="id_email">
+    <small id="emailHelp" class="form-text text-muted">Enter a valid email address for us to contact you.</small>
+{% endif %}  

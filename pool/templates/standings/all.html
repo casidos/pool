@@ -1,0 +1,81 @@
+<table class="table table-sm table-striped table-bordered table-responsive table-hover">
+    <thead>
+        <tr class="bg-primary text-white">
+            <th>Name</th>
+            <th>Overall</th>
+            <th colspan="6">Preseason</th>
+            <th colspan="18">Regular Season</th>
+            <th colspan="5">Post-Season</th>
+        </tr>
+        <tr class="table-active">
+            <th>Poolee</th>
+            <th>Tot</th>
+            <th>HOF</th>
+            <th>Wk 1</th>
+            <th>Wk 2</th>
+            <th>Wk 3</th>
+            <th>Wk 4</th>
+            <th>Tot</th>
+            <th>Wk 1</th>
+            <th>Wk 2</th>
+            <th>Wk 3</th>
+            <th>Wk 4</th>
+            <th>Wk 5</th>
+            <th>Wk 6</th>
+            <th>Wk 7</th>
+            <th>Wk 8</th>
+            <th>Wk 9</th>
+            <th>Wk 10</th>
+            <th>Wk 11</th>
+            <th>Wk 12</th>
+            <th>Wk 13</th>
+            <th>Wk 14</th>
+            <th>Wk 15</th>
+            <th>Wk 16</th>
+            <th>Wk 17</th>
+            <th>Tot</th>
+            <th>Wk 1</th>
+            <th>Wk 2</th>
+            <th>Wk 3</th>
+            <th>Wk 4</th>
+            <th>Tot</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.user.username}}</span></td>
+            <td>{{item.overall_total}}</td>
+            <td>{{item.pre_hof}}</td>
+            <td>{{item.pre_week_1}}</td>
+            <td>{{item.pre_week_2}}</td>
+            <td>{{item.pre_week_3}}</td>
+            <td>{{item.pre_week_4}}</td>
+            <td>{{item.pre_total}}</td>
+            <td>{{item.reg_week_1}}</td>
+            <td>{{item.reg_week_2}}</td>
+            <td>{{item.reg_week_3}}</td>
+            <td>{{item.reg_week_4}}</td>
+            <td>{{item.reg_week_5}}</td>
+            <td>{{item.reg_week_6}}</td>
+            <td>{{item.reg_week_7}}</td>
+            <td>{{item.reg_week_8}}</td>
+            <td>{{item.reg_week_9}}</td>
+            <td>{{item.reg_week_10}}</td>
+            <td>{{item.reg_week_11}}</td>
+            <td>{{item.reg_week_12}}</td>
+            <td>{{item.reg_week_13}}</td>
+            <td>{{item.reg_week_14}}</td>
+            <td>{{item.reg_week_15}}</td>
+            <td>{{item.reg_week_16}}</td>
+            <td>{{item.reg_week_17}}</td>
+            <td>{{item.reg_total}}</td>
+            <td>{{item.post_week_1}}</td>
+            <td>{{item.post_week_2}}</td>
+            <td>{{item.post_week_3}}</td>
+            <td>{{item.post_week_4}}</td>
+            <td>{{item.post_total}}</td>            
+        </tr>        
+        {% endfor %}
+    </tbody>
+</table>

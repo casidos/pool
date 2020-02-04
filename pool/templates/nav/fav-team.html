@@ -27,7 +27,7 @@
                     <a class="nav-link" href="{% url 'picks'  %}" style="{% if request.resolver_match.url_name == "picks" %}color:{{user.favorite_team.color_02}};{% else %}color:{{user.favorite_team.color_03}};{% endif %}"><i class="fas fa-clipboard-check"></i> Picks</a>
                 </li> 
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="{% url 'standings'  %}" style="{% if request.resolver_match.url_name == "standings" %}color:{{user.favorite_team.color_02}};{% else %}color:{{user.favorite_team.color_03}};{% endif %}"><i class="fas fa-sort-amount-up"></i> Standings</a>
+                    <a class="nav-link" href="{% url 'standings'  %}" style="{% if request.resolver_match.url_name == "standings" %}color:{{user.favorite_team.color_02}};{% else %}color:{{user.favorite_team.color_03}};{% endif %}"><i class="fas fa-sort-amount-up"></i> Standings</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'winners'  %}" style="{% if request.resolver_match.url_name == "winners" %}color:{{user.favorite_team.color_02}};{% else %}color:{{user.favorite_team.color_03}};{% endif %}"><i class="fas fa-trophy"></i> Winners</a>
@@ -70,7 +70,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="/admin"><i class="fas fa-user-lock"></i>  Site-Wide</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'admin_no_picks' %}"><i class="fas fa-bell"></i>  Send Email Reminder</a>
+                            <a class="dropdown-item" href="{% url 'email_reminder' %}"><i class="fas fa-bell"></i>  Send Email Reminder</a>
                         </div>
                     </div>
                 {% endif %}                

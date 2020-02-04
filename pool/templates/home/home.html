@@ -5,18 +5,17 @@
 
   <p class="text-right">All times are displayed in your selected <strong>{{request.session.django_timezone}}</strong> Timezone</p>
 
-  {% include "home_alerts.html" %}
+  {% include "home/alerts.html" %}
 
   <div class="row mb-3">
     <div class="col-md-4 themed-grid-col">
-    Weekly Standings Go Here
+      {% include "home/top_five.html" %}
     </div>
-    {% comment %} <div class="col-md-4 themed-grid-col"> {% endcomment %}
     <div class="col-md-4">
-        {% include "home_news.html" %}
+        {% include "home/news.html" %}
     </div>
     <div class="col-md-4 themed-grid-col">
-    Overall Standings Go Here
+      {% include "home/overall.html" %}
     </div>
   </div>
 

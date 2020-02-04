@@ -29,11 +29,21 @@ def get_users_no_picks(request):
 
     return users
 
-class StandingsView(LoginRequiredMixin, TemplateView):
-    pass
+def standings_view(request):
+    template = 'standings.html'
 
-class AdminNoPicks(LoginRequiredMixin, TemplateView):
-    template_name = 'admin_no_picks.html'
+    if not 'selected_week_type_id' in request.session:        
+        selected_week_type_id = 1
+        request.session['selected_week_type_id'] = 1
+    else:
+        selected_week_type_id = request.session['selected_week_type_id']
+        
+    args = get_standings_args(request, selected_week_type_id)
+
+    return render(request, template, args)
+
+class EmailReminder(LoginRequiredMixin, TemplateView):
+    template_name = 'email_reminder.html'
 
     def get(self, request): 
         
@@ -120,16 +130,17 @@ def set_timezone(request):
         request.session['django_timezone'] = request.POST['timezone']
         return redirect('/')
     else:
-        return render(request, 'home.html', {'timezones': pytz.common_timezones})
+        return render(request, 'home/home.html', {'timezones': pytz.common_timezones})
 
 class HomePageView(LoginRequiredMixin, TemplateView):
-    template_name = 'home.html'
+    template_name = 'home/home.html'
     
     def get(self, request): 
         
         #HAS TO EXIST OR WE WOULDN'T BE HERE
         args = get_current(request)       
 
+        args.update({'standings' : Standings.objects.all().order_by('-overall_total')})
         args.update({'template_name' : self.template_name})
         args.update({'news_items' : NewsItem.objects.order_by('-effective_date')[:3]})
         args.update({'alerts' : Alert.objects.filter(user_id=request.user.id)})
@@ -138,7 +149,7 @@ class HomePageView(LoginRequiredMixin, TemplateView):
         return render(request, self.template_name, args)        
     
 class NewsItemsView(LoginRequiredMixin, ListView):
-    template_name = 'news.html'
+    template_name = 'news/news.html'
     
     def get(self, request):    
         
@@ -163,7 +174,14 @@ class WinnersView(LoginRequiredMixin, ListView):
     
     def get(self, request):
 
-        args = get_winners_args(request, 2)
+        # selected_week_type_id = request.session['selected_week_type_id']
+        if not 'selected_week_type_id' in request.session:        
+            selected_week_type_id = 1
+            request.session['selected_week_type_id'] = 1
+        else:
+            selected_week_type_id = request.session['selected_week_type_id']
+
+        args = get_winners_args(request, selected_week_type_id)
 
         return render(request, self.template_name, args)
 
@@ -180,7 +198,7 @@ class FeesView(LoginRequiredMixin, ListView):
 
 @login_required
 def change_layout_type_for_picks(request, pk):
-    template_name = 'picks.html'
+    template_name = 'picks/picks.html'
     selected_page_layout_type = PageLayoutType.objects.get(pk=pk)
     Preferences.objects.filter(user_id=request.user.id).update(picks_page_layout_type_id=selected_page_layout_type.id)
     return redirect('picks')
@@ -194,44 +212,58 @@ def change_layout_type_for_winners(request, pk):
 
 @login_required
 def change_selected_week_for_picks(request, pk):    
-    template_name = 'picks.html'      
-    # args = get_picks_args(request, pk, 0)    
+    template_name = 'picks/picks.html'      
+     
     request.session['selected_week_id'] = pk
+
     return redirect('picks')
 
 @login_required
 def change_week_type_for_picks(request, pk):
-    template_name = 'picks.html' 
-    request.session['selected_week_type_id'] = pk
-    # args = get_picks_args(request, 0, pk)        
+    template_name = 'picks/picks.html' 
     
-    # return render(request, template_name, args)
+    request.session['selected_week_type_id'] = pk  
+    request.session['selected_week_id'] = 0  
+    
     return redirect('picks')
     
 @login_required
 def change_week_type_for_winners(request, pk):
     template_name = 'winners.html' 
     
-    args = get_winners_args(request, pk)        
+    request.session['selected_week_type_id'] = pk       
     
-    return render(request, template_name, args)
+    return redirect('winners')
+    
+@login_required
+def change_week_type_for_standings(request, pk):
+    template_name = 'standings.html' 
+    
+    request.session['selected_week_type_id'] = pk
 
-class PicksView(LoginRequiredMixin, ListView):
-    template_name = 'picks.html'    
+    return redirect('standings')
+
+class PicksView(LoginRequiredMixin, TemplateView):
+    template_name = 'picks/picks.html'    
 
     def get(self, request):
 
-        selected_week = get_selected_week(request)   
-
-        if selected_week:
-            selected_week_type = selected_week.week_type
-            args = get_picks_args(request, selected_week.id, selected_week_type.id) 
+        if not 'selected_week_type_id' in request.session:        
+            selected_week_type_id = 1
+            request.session['selected_week_type_id'] = 1
+            first_week = WeekType.objects.filter(id=1)[0]
+            request.session['selected_week_id'] = first_week.id
         else:
-            current_week = get_current_week(request)
-            current_week_type = current_week.week_type
-            args = get_picks_args(request, current_week.id, current_week_type.id) 
-        
-        return render(request, self.template_name, args) 
+            selected_week_type_id = request.session['selected_week_type_id']
+            # first_week = WeekType.objects.filter(id=1)[0]
+            # request.session['selected_week_id'] = first_week.id
+
+        selected_week_type_id = request.session['selected_week_type_id']
+        selected_week_id = request.session['selected_week_id']
+
+        args = get_picks_args(request, selected_week_id, selected_week_type_id)
+
+        return render(request, self.template_name, args)
 
 @login_required
 def make_pick(request, pk, pt_pk):
@@ -342,47 +374,67 @@ def get_weeks_by_week_type(id):
 
 def get_winners_args(request, week_type_id):
     
-    args = get_current(request)  
+    if not 'selected_week_type_id' in request.session:        
+        request.session['selected_week_type_id'] = week_type_id
     
     if week_type_id == '4':
-        winners = Winner.objects.all().order_by('-id')
-        args.update({'winners' : winners})
-        args.update({'week_types' : WeekType.objects.all().order_by('id')})
-        args.update({'page_layout_types': PageLayoutType.objects.all()})
+        selected_week_type = WeekType()
+        selected_week_type.id = week_type_id
+        winners = Winner.objects.all().order_by('id')
+    else:
+        selected_week_type = WeekType.objects.get(id = week_type_id)
+        winners = Winner.objects.filter(week__week_type_id=week_type_id)
 
-        return args
-        
-    week_type = WeekType.objects.get(id=week_type_id)
+    args = get_current(request)  
 
-    if not 'selected_week_type_id' in request.session:        
-        request.session['selected_week_type_id'] = week_type.id
-
-    winners = Winner.objects.filter(week__week_type_id=week_type_id)
-
+    args.update({'selected_week_type' : selected_week_type})
     args.update({'winners' : winners})
-    args.update({'week_types' : WeekType.objects.filter(is_active=True).order_by('id')})
-    args.update({'selected_week_type' : week_type})
+    args.update({'week_types' : WeekType.objects.all().order_by('id')})
     args.update({'page_layout_types': PageLayoutType.objects.all()})
 
-    return args
+    return args    
+
+def get_standings_args(request, week_type_id):
+
+    if not 'selected_week_type_id' in request.session:        
+        request.session['selected_week_type_id'] = week_type_id
+    
+    if week_type_id == '4':
+        selected_week_type = WeekType()
+        selected_week_type.id = week_type_id
+    else:
+        selected_week_type = WeekType.objects.get(id = week_type_id)
+
+    args = get_current(request)  
+
+    standings = Standings.objects.all().order_by('-overall_total')
+
+    args.update({'selected_week_type' : selected_week_type})
+    args.update({'items' : standings})
+    args.update({'week_types' : WeekType.objects.all().order_by('id')})
+    args.update({'page_layout_types': PageLayoutType.objects.all()})
+
+    return args    
 
 def get_picks_args(request, week_id, week_type_id):
 
     args = get_current(request)
-    
-    if week_id == 0:#we are changing the week type
-        selected_week_type = WeekType.objects.get(id = week_type_id)
-        selected_week_type_id = selected_week_type.id
-        selected_weeks = Week.objects.filter(week_type_id = selected_week_type_id)
+
+    if week_id == 0: #changing the week type
+        selected_week_type = WeekType.objects.get(id= week_type_id)
+        request.session['selected_week__type_id'] = selected_week_type.id
+        selected_weeks = Week.objects.filter(week_type_id = selected_week_type.id)
         selected_week = selected_weeks[0]
+        request.session['selected_week_id'] = selected_week.id
     else:
         selected_week = Week.objects.get(id = week_id)
         request.session['selected_week_id'] = selected_week.id
         selected_week_type = selected_week.week_type
-        selected_weeks = get_weeks_by_week_type(selected_week_type.id)       
+        request.session['selected_week__type_id'] = selected_week_type.id
+        selected_weeks = get_weeks_by_week_type(selected_week_type.id)
 
-    games = Game.objects.filter(week_id = selected_week.id)     
-
+    games = Game.objects.filter(week_id = selected_week.id) 
+   
     picks = Pick.objects.prefetch_related('game_id__week_id').filter(game_id__week_id = selected_week.id, user_id = request.user.id).order_by('game__start_time')
 
     args.update({'picks' : picks})
@@ -390,8 +442,8 @@ def get_picks_args(request, week_id, week_type_id):
     args.update({'selected_week' : selected_week})
     args.update({'selected_weeks' : selected_weeks})
     args.update({'page_layout_types': PageLayoutType.objects.all()})
-
-    return args;
+    
+    return args
 
 def send_email_reminder(request):
 
@@ -413,4 +465,4 @@ def send_email_reminder(request):
     
     send_mass_mail((messages), fail_silently=False)
 
-    return redirect('admin_no_picks')
+    return redirect('email_reminder')

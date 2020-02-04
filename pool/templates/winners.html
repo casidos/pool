@@ -8,30 +8,30 @@
     <h2 class="mb-4"><i class="fas fa-trophy"></i> Winners</h2>
   </div>
   <div class="col">
-    {% include 'winners_week_selector.html' %}
+    {% include 'winners/week_selector.html' %}
   </div>
 </div>
 
 <div class="row" id="pageLayoutDiv" style="display:none">
   <div class="col">
-    {% include 'winners_prefs.html' %}
+    {% include 'winners/preferences.html' %}
   </div>
 </div>
 
-<div class="row">
+<div class="row mb-1">
 {% for item in winners %}
-    <div class="col">
+    <div class="col-lg themed-grid-col m-1">
         {% if preferences.winners_page_layout_type.id == 1 %}
-            {% include 'winner_list.html' %}
+            {% include 'winners/list.html' %}
         {% elif preferences.winners_page_layout_type.id == 2 %}
-            {% include 'winner_grid.html' %}
+            {% include 'winners/grid.html' %}
         {% else %}
-            {% include 'winner_compact.html' %}  
+            {% include 'winners/compact.html' %}  
         {% endif %}
     </div><!--END COL-->
     {% if forloop.counter|divisibleby:4 %}
     </div><!--END ROW-->
-    <div class="row"><!--START NEW ROW-->
+    <div class="row mb-1"><!--START NEW ROW-->
     {% endif %}
 {% endfor %}
 </div> <!--END ROW-->

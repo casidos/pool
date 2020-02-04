@@ -1,0 +1,44 @@
+<h5><i class="fas fa-sort-amount-up"></i> Top 5 {{current_week.name}}</h5>
+<table class="table table-sm table-striped table-bordered">
+    <thead>        
+        <tr class="bg-primary text-white">
+            <th>Rank</th>
+            <th>Poolee</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in standings %}
+        <tr>
+            <td><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.id}}</span></td>
+            <td><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.user.username}}</span></td>
+            <td id="preHofId" style="display:{% if current_week.name == 'Hall of Fame' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.pre_hof}}</span></td>
+            <td id="preWeek1Id" style="display:{% if current_week.week_type_id == 1 and current_week.name == 'Week 1' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.pre_week_1}}</span></td>
+            <td id="preWeek2Id" style="display:{% if current_week.week_type_id == 1 and current_week.name == 'Week 2' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.pre_week_2}}</span></td>
+            <td id="preWeek3Id" style="display:{% if current_week.week_type_id == 1 and current_week.name == 'Week 3' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.pre_week_3}}</span></td>
+            <td id="preWeek4Id" style="display:{% if current_week.week_type_id == 1 and current_week.name == 'Week 4' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.pre_week_4}}</span></td>
+            <td id="regWeek1Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 1' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_1}}</span></td>
+            <td id="regWeek2Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 2' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_2}}</span></td>
+            <td id="regWeek3Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 3' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_3}}</span></td>
+            <td id="regWeek4Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 4' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_4}}</span></td>
+            <td id="regWeek5Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 5' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_5}}</span></td>
+            <td id="regWeek6Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 6' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_6}}</span></td>
+            <td id="regWeek7Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 7' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_7}}</span></td>
+            <td id="regWeek8Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 8' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_8}}</span></td>
+            <td id="regWeek9Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 9' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_9}}</span></td>
+            <td id="regWeek10Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 10' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_10}}</span></td>
+            <td id="regWeek11Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 11' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_11}}</span></td>
+            <td id="regWeek12Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 12' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_12}}</span></td>
+            <td id="regWeek13Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 13' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_13}}</span></td>
+            <td id="regWeek14Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 14' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_14}}</span></td>
+            <td id="regWeek15Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 15' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_15}}</span></td>
+            <td id="regWeek16Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 16' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_16}}</span></td>
+            <td id="regWeek17Id" style="display:{% if current_week.week_type_id == 2 and current_week.name == 'Week 17' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.reg_week_17}}</span></td>
+            <td id="postWeek1Id" style="display:{% if current_week.name == 'Wild Card Weekend' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.post_week_1}}</span></td>
+            <td id="postWeek2Id" style="display:{% if current_week.name == 'Divisional Playoffs' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.post_week_2}}</span></td>
+            <td id="postWeek3Id" style="display:{% if current_week.name == 'Conference Championships' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.post_week_3}}</span></td>
+            <td id="postWeek4Id" style="display:{% if current_week.name == 'Super Bowl' %}block{% else %}none{% endif %};"><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.post_week_4}}</span></td>
+        </tr>        
+    {% endfor %}
+    </tbody>
+</table>

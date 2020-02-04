@@ -134,12 +134,12 @@ class MyValidator(UnicodeUsernameValidator):
     message = _('This is not working for some reason')
 
 class CustomUser(AbstractUser):
-
+    US_EST = 'US/Eastern'
     TZS = [
         ('US/Alaska', 'US/Alaska'), 
         ('US/Arizona','US/Arizona'), 
         ('US/Central','US/Central'), 
-        ('US/Eastern','US/Eastern'), 
+        (US_EST,'US/Eastern'), 
         ('US/Hawaii','US/Hawaii'), 
         ('US/Mountain','US/Mountain'), 
         ('US/Pacific','US/Pacific'), 
@@ -191,7 +191,7 @@ class CustomUser(AbstractUser):
     image = models.ImageField(upload_to='profile_image', blank=True, null=True)    
     # None, 'Your String For Display'
     favorite_team = models.ForeignKey(Team, on_delete=models.CASCADE, blank=True, null=True)
-    timezone = models.CharField(max_length=50, blank=False, null=False, default='US/Eastern', choices=TZS)
+    timezone = models.CharField(max_length=50, blank=False, null=False, default=US_EST, choices=TZS)
 
     def get_absolute_url(self):
         return reverse('edit_user', kwargs={'pk': self.pk})
@@ -493,6 +493,7 @@ class Preferences(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     picks_page_layout_type = models.ForeignKey(PageLayoutType, on_delete=models.CASCADE, related_name='picks_page_layout_type')
     winners_page_layout_type = models.ForeignKey(PageLayoutType, on_delete=models.CASCADE, blank=False, null=False, default=1, related_name='winners_page_layout_type')
+    standings_page_layout_type = models.ForeignKey(PageLayoutType, on_delete=models.CASCADE, blank=False, null=False, default=1, related_name='standings_page_layout_type')
 
     def __str__(self):
         return self.picks_page_layout_type.name
@@ -500,6 +501,44 @@ class Preferences(models.Model):
     class Meta:
         verbose_name = 'Preferences'
         verbose_name_plural = "Preferences"
+
+class Standings(models.Model):
+    id = models.BigIntegerField(primary_key=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.DO_NOTHING)
+    pre_hof = models.PositiveSmallIntegerField(default=0)
+    pre_week_1 = models.PositiveSmallIntegerField(default=0)
+    pre_week_2 = models.PositiveSmallIntegerField(default=0)
+    pre_week_3 = models.PositiveSmallIntegerField(default=0)
+    pre_week_4 = models.PositiveSmallIntegerField(default=0)
+    pre_total = models.PositiveSmallIntegerField(default=0)
+    reg_week_1 = models.PositiveSmallIntegerField(default=0)
+    reg_week_2 = models.PositiveSmallIntegerField(default=0)
+    reg_week_3 = models.PositiveSmallIntegerField(default=0)
+    reg_week_4 = models.PositiveSmallIntegerField(default=0)
+    reg_week_5 = models.PositiveSmallIntegerField(default=0)
+    reg_week_6 = models.PositiveSmallIntegerField(default=0)
+    reg_week_7 = models.PositiveSmallIntegerField(default=0)
+    reg_week_8 = models.PositiveSmallIntegerField(default=0)
+    reg_week_9 = models.PositiveSmallIntegerField(default=0)
+    reg_week_10 = models.PositiveSmallIntegerField(default=0)
+    reg_week_11 = models.PositiveSmallIntegerField(default=0)
+    reg_week_12 = models.PositiveSmallIntegerField(default=0)
+    reg_week_13 = models.PositiveSmallIntegerField(default=0)
+    reg_week_14 = models.PositiveSmallIntegerField(default=0)
+    reg_week_15 = models.PositiveSmallIntegerField(default=0)
+    reg_week_16 = models.PositiveSmallIntegerField(default=0)
+    reg_week_17 = models.PositiveSmallIntegerField(default=0)
+    reg_total = models.PositiveSmallIntegerField(default=0)
+    post_week_1 = models.PositiveSmallIntegerField(default=0)
+    post_week_2 = models.PositiveSmallIntegerField(default=0)
+    post_week_3 = models.PositiveSmallIntegerField(default=0)
+    post_week_4 = models.PositiveSmallIntegerField(default=0)
+    post_total = models.PositiveSmallIntegerField(default=0)
+    overall_total = models.PositiveSmallIntegerField(default=0)
+
+    class Meta:
+        managed = False
+        db_table = 'Standings'
 
 def update_weeks_only_one_active(sender, instance, **kwargs):
     if instance.is_active:
@@ -789,16 +828,7 @@ def create_weeks_on_season_create(sender, instance, **kwargs):
                     w = Week(name='Super Bowl', effective_date=now, effective_end_date=nowPlusSeven, is_active=False, week_type=post, season=saved_season)
                     w.save()
                     create_winner_for_week(w)
-                    create_game(1, w, now, 1)
-
-                    third_place_overall = Winner(message='Overall Third Place')
-                    third_place_overall.save()
-
-                    second_place_overall = Winner(message='Overall Second Place')
-                    second_place_overall.save()
-
-                    overall = Winner(message='The Overall Winner')
-                    overall.save()
+                    create_game(1, w, now, 1)                    
                 
             except IntegrityError as ie:
                 print('IntegrityError creating Season')

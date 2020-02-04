@@ -1,0 +1,11 @@
+{% if form.username.errors %}
+    <label for="{{ form.username.id_for_label }}" style="color:#dc3545;">Username</label>    
+    <input type="text" name="username" class="form-control is-invalid" aria-describedby="inputGroupPrepend3" maxlength="150" autofocus required id="id_username">
+    <div class="invalid-feedback">
+    {{ form.username.errors }}
+    </div>
+{% else %}
+    <label for="{{ form.username.id_for_label }}">Username</label>    
+    <input type="text" name="username" class="form-control" maxlength="150" autofocus required id="id_username">
+    <small id="usernameHelp" class="form-text text-muted">Required. 150 characters or fewer. Names and numbers only.</small>
+{% endif %} 

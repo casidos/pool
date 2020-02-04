@@ -1,0 +1,31 @@
+<table class="table table-sm table-striped table-bordered table-hover">
+        <thead>
+        <tr class="bg-primary text-white">
+            <th>Name</th>
+            <th>Overall</th>
+            <th colspan="6">Preseason</th>
+        </tr>
+        <tr class="table-active">
+            <th>Poolee</th>
+            <th>Tot</th>
+            <th>HOF</th>
+            <th>Wk 1</th>
+            <th>Wk 2</th>
+            <th>Wk 3</th>
+            <th>Wk 4</th>
+            <th>Preseason Total</th>
+        </tr>
+        </thead>
+        {% for item in items %}
+        <tr>
+            <td><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.user.username}}</span></td>
+            <td>{{item.overall_total}}</td>
+            <td>{{item.pre_hof}}</td>
+            <td>{{item.pre_week_1}}</td>
+            <td>{{item.pre_week_2}}</td>
+            <td>{{item.pre_week_3}}</td>
+            <td>{{item.pre_week_4}}</td>
+            <td>{{item.pre_total}}</td>    
+        </tr>        
+        {% endfor %}
+        </table>

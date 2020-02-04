@@ -32,6 +32,14 @@ class CurrentWeekMiddleware:
         #CHECK THE CURRENT DATE TIME AGAINST WHAT WEEK SHOULD BE ACTIVE
         now = get_now()
 
+        # if not 'selected_week_type_id'in request.session:
+        #     request.session['selected_week_type_id'] = 2
+        #     request.session['selected_week_id'] = 1
+
+        # if not 'selected_week_id' in request.session:
+        #     request.session['selected_week_type_id'] = 2
+        #     request.session['selected_week_id'] = 1
+
         if 'current_season_id' in request.session:
 
             current_season_id = request.session['current_season_id']
@@ -69,14 +77,6 @@ class CurrentWeekMiddleware:
         request.session['current_week_id'] = current_week_id 
 
         return self.get_response(request)
-    
-    # def process_view(self, request, view_func, view_args, view_kwargs):
-    #     print('here i am in the process_view checking for current season id')
-    #     current_season_id = request.session['current_season_id']  
-        
-    #     if current_season_id == 0:
-    #         # return render(request, 'no-season.html', {})
-    #         return redirect('/admin/')
 
 
     

@@ -1,20 +1,20 @@
 {% load humanize %}
 {% for item in picks %}
-<div class="row">
-    <div class="col-lg">
+<div id="rowOne" class="row">
+    <div id="rowOneColOne" class="col-md themed-grid-col">
         {% ifchanged item.game.start_time %}
-            <div class="row p-1 mt-2 mb-2 bg-primary text-white">
-                <div class="col-lg text-left">
+            <div id="gameDateTimeRow" class="row p-1 mt-2 mb-2 bg-primary text-white">
+                <div id="gameDateTimeRowColumn" class="col-lg text-left">
                     <span>{{item.game.start_time |date:'l, M d g:i a'}}</span>
                     <span>{{item.game.start_time |date:'e'}}</span>
-                </div>
-            </div>
+                </div><!--END COL LG LEFT-->
+            </div><!--ROW 1 COL 1 ROW 2-->
         {% endifchanged %}
-        <div class="row table-active p-1">
-            <div class="col-lg text-left">{{item.game.city.name}} - {{item.game.city.stadium}}</div>
-            <div class="col-lg text-right">Field: {{item.game.city.stadium.surface.name}}, Capacity: {{item.game.city.stadium.capacity|intcomma}}</div>
-        </div>
-        <div class="row align-items-center mb-2">
+        <div id="cityStadiumRow" class="row table-active p-1">
+            <div id="cityStadiumRowCityStadium" class="col-lg text-left">{{item.game.city.name}} - {{item.game.city.stadium}}</div><!--END COL LG LEFT-->
+            <div id="cityStadiumRowColFieldCapacity" class="col-lg text-right">Field: {{item.game.city.stadium.surface.name}}, Capacity: {{item.game.city.stadium.capacity|intcomma}}</div><!--END COL LG RIGHT-->
+        </div><!--ROW 3-->
+        <div id="picksRow" class="row align-items-center mb-2">
             <div class="col-4">
                 <div class="row align-items-center">
                     <div class="col-md mt-2">
@@ -32,10 +32,10 @@
                         {{item.game.home_score}}
                     </div>
                 </div>
-            </div>
+            </div><!--END COL 4-->
             <div class="col-3">
                 {{item.game.game_status.name|upper}}
-            </div>
+            </div><!--END COL 3-->
             <div class="col-3">
                 {% if item.game.is_not_yet_started %}
                     <div class="btn-group">
@@ -85,18 +85,19 @@
                     </button>
                 {% endif %}
                 
-            </div>
-            <div class="col">
+            </div><!--END COL 3-->
+            <div class="col-2">
                 {% if item.game.is_complete %}
                     {% if item.score > 0 %}
                         <strong>{{item.score}}</strong>
                     {% else %}
                     <span>0</span>
                     {% endif %} 
-                {% endif %}
-                
-            <div>
-        </div>
-    </div>    
-  </div>
+                {% else %}
+                    0
+                {% endif %}                
+            <div><!--END COL 2-->
+        </div><!--ROW 4-->
+    </div><!--ROW 1 COL-1-->  
+</div><!--ROW 1-->
   {% endfor %}

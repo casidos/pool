@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="{% static '/nfl/bootstrap.min.css' %}">    
     <link rel="stylesheet" type="text/css" href="{% static '/nfl/grid.css' %}">    
+    <link rel="stylesheet" type="text/css" href="{% static '/nfl/style.css' %}">    
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <script src="https://kit.fontawesome.com/73bc42d678.js" crossorigin="anonymous"></script>
 
@@ -22,12 +23,14 @@
 {% block nav %}     
     {% if not request.session.current_season_id == 0 %}
         {% if user.is_authenticated and user.favorite_team %}
-            {% include "nav-fav-team.html" %}
+            {% include "nav/fav-team.html" %}
         {% elif user.is_authenticated and not user.favorite_team %}
-            {% include "nav-no-fav-team.html" %}
+            {% include "nav/no-fav-team.html" %}
         {% else %}
-            {% include "nav-guest.html" %}
-        {% endif %}        
+            {% include "nav/guest.html" %}
+        {% endif %}
+    {% else %}
+        {% include "nav/no-season.html" %}        
     {% endif %}
 {% endblock nav %}
 

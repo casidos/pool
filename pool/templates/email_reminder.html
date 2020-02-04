@@ -23,9 +23,9 @@
     </div>
     <br/>
     {% if request.user.favorite_team %}
-        <a href="{% url 'send_email_reminder' %}" class="btn btn-primary" style="background-color:{{user.favorite_team.color_03}};color:{{user.favorite_team.color_01}};border-color:{{user.favorite_team.color_01}}" href="{% url 'admin_no_picks' %}"><i class="fas fa-bell"></i>  Send</a>
+        <a href="{% url 'send_email_reminder' %}" class="btn btn-primary" style="background-color:{{user.favorite_team.color_03}};color:{{user.favorite_team.color_01}};border-color:{{user.favorite_team.color_01}}" href="{% url 'email_reminder' %}"><i class="fas fa-bell"></i>  Send</a>
     {% else %}
-        <a href="{% url 'send_email_reminder' %}" class="btn btn-primary" href="{% url 'admin_no_picks' %}"><i class="fas fa-bell"></i>  Send</a>
+        <a href="{% url 'send_email_reminder' %}" class="btn btn-primary" href="{% url 'email_reminder' %}"><i class="fas fa-bell"></i>  Send</a>
     {% endif %}
 {% else %}
     <div class="row">

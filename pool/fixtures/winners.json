@@ -1,0 +1,22 @@
+[{
+        "model": "pool.winner",
+        "pk": 1,
+        "fields": {
+            "message": "The Overall Winner"
+        }
+    },
+    {
+        "model": "pool.winner",
+        "pk": 2,
+        "fields": {
+            "message": "Second Place Overall"
+        }
+    },
+    {
+        "model": "pool.winner",
+        "pk": 3,
+        "fields": {
+            "message": "Third Place Overall"
+        }
+    }
+]

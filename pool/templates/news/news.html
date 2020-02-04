@@ -8,27 +8,27 @@
 <h2 class="mt-1 mb-4"><i class="fas fa-newspaper"></i> News</h2>
 
 {% if items %}
-    <div class="row">           
-        <div class="col-md-8">            
+    <div class="row mb-3">
+        <div class="col-md-8 themed-grid-col">
             {% for item in items %}
             <table class="table">
-            <tr class="table-active">
-                <th>{{item.title}}</th>
-            </tr>
-            <tr>
-                <td>{{item.message}}</td>
-            </tr>
-            <tr>
-                <td>Effective {{item.effective_date}}</td>
-            </tr>
+                <tr class="table-active">
+                    <th>{{item.title}}</th>
+                </tr>
+                <tr>
+                    <td>{{item.message}}</td>
+                </tr>
+                <tr>
+                    <td>Effective {{item.effective_date}}</td>
+                </tr>
             </table>
             {% endfor %}            
         </div>
     </div>
 
 {% else %}
-    <div class="row">       
-        <div class="col-md-8">      
+    <div class="row mb-3">
+        <div class="col-md-8 themed-grid-col">
             <div class="alert alert-dark"><span style="font-style:italic;">There is no news</span></div>        
         </div>
     </div>

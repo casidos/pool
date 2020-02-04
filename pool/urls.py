@@ -2,7 +2,7 @@ import django
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import CreateUser, EditUser, TalkView, HomePageView, PoolMembers, NewsItemsView, RulesView, FeesView, PicksView, WinnersView, AdminNoPicks, StandingsView
+from .views import CreateUser, EditUser, TalkView, HomePageView, PoolMembers, NewsItemsView, RulesView, FeesView, PicksView, WinnersView, EmailReminder
 from . import views
 
 def custom_page_not_found(request):
@@ -26,14 +26,16 @@ urlpatterns = [
     path('rules/', RulesView.as_view(), name='rules'),
     path('fees/', FeesView.as_view(), name='fees'),
     path('picks/', PicksView.as_view(), name='picks'),
+    # path('picks/<wt_pk>/<w_pk>', views.my_picks, name='picks'),
     path('winners/', WinnersView.as_view(), name='winners'),
-    path('standings/', StandingsView.as_view(), name='standings'),
+    path('standings/', views.standings_view, name='standings'),
+    path('change_week_type_for_standings/<pk>', views.change_week_type_for_standings, name='change_week_type_for_standings'),
     path('change_week_type_for_winners/<pk>', views.change_week_type_for_winners, name='change_week_type_for_winners'),
     path('change_layout_type_for_picks/<pk>', views.change_layout_type_for_picks, name='change_layout_type_for_picks'),
     path('change_layout_type_for_winners/<pk>', views.change_layout_type_for_winners, name='change_layout_type_for_winners'),
     path('change_week_type_for_picks/<pk>', views.change_week_type_for_picks, name='change_week_type_for_picks'),    
     path('change_selected_week_for_picks/<pk>', views.change_selected_week_for_picks, name='change_selected_week_for_picks'),
-    path('admin_no_picks', AdminNoPicks.as_view(), name='admin_no_picks'),
+    path('email_reminder', EmailReminder.as_view(), name='email_reminder'),
     path('send_email_reminder', views.send_email_reminder, name='send_email_reminder'),
     path("404/", custom_page_not_found),
     path("500/", custom_server_error),

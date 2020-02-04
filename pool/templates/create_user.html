@@ -8,6 +8,15 @@
 <div class="row justify-content-center">
   <div class="col-5">
 
+  {% comment %} <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div style="text-align: center;">
+      <img class="mb-4" src="../../static/nfl/NFL.gif" alt="">
+    </div>
+    {{form.as_ul}}
+
+  </form> {% endcomment %}
+
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <div style="text-align: center;">
@@ -17,93 +26,59 @@
       <h1 class="h3 mb-3 font-weight-normal">Register for llsutherland.ca</h1>
 
       {% if form.errors %}
-        <div class="alert alert-danger" role="alert">Registration Error. Please see below.</div>
+        <div class="alert alert-danger" role="alert">Registration Error. Please see below.
+        <p>{{form.errors}}</p>
+        </div>
       {% endif %}   
 
       <div class="form-row">
         <div class="form-group col-md-12">
-        {% if form.username.errors %}
-          <label for="{{ form.username.id_for_label }}" style="color:#dc3545;">Username</label>    
-          <input type="text" name="username" class="form-control is-invalid" aria-describedby="inputGroupPrepend3" maxlength="150" autofocus required id="id_username">
-          <div class="invalid-feedback">
-            {{ form.username.errors }}
-          </div>
-        {% else %}
-          <label for="{{ form.username.id_for_label }}">Username</label>    
-          <input type="text" name="username" class="form-control" maxlength="150" autofocus required id="id_username">
-          <small id="usernameHelp" class="form-text text-muted">Required. 150 characters or fewer. Names and numbers only.</small>
-        {% endif %}    
+        {% include 'user/username.html' %}   
         </div>
       </div>
     
       <div class="form-row">
         <div class="form-group col-md-12">
-          {% if form.email.errors %}
-            <label for="{{ form.email.id_for_label }}" style="color:#dc3545;">Email</label>    
-            <input type="email" name="email" class="form-control is-invalid" aria-describedby="inputGroupPrepend4" maxlength="254" autofocus required id="id_email">
-            <div class="invalid-feedback">
-              {{ form.email.errors }}
-            </div>
-          {% else %}
-            <label for="{{ form.email.id_for_label }}">Email</label>    
-            <input type="text" name="email" class="form-control" maxlength="254" autofocus required id="id_email">
-            <small id="emailHelp" class="form-text text-muted">Enter a valid email address for us to contact you.</small>
-          {% endif %}     
+          {% include 'user/email.html' %}
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="id_first_name">First:</label> 
-          <input type="text" name="first_name" class="form-control" maxlength="20" required autofocus id="id_first_name">
+          {% include 'user/first_name.html' %}
         </div>
 
         <div class="form-group col-md-6">
-          <label for="id_last_name">Last:</label> 
-          <input type="text" name="last_name" class="form-control" name="last_name" required autofocus id="id_last_name">
+          {% include 'user/last_name.html' %}
         </div>
       </div>
   
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="id_mobile">Mobile #:</label> 
-          <input type="text" name="mobile" class="form-control" maxlength="20" autofocus id="id_mobile">
-          <small id="mobileHelp" class="form-text text-muted">Optional. At some point, I may introduce (opt-in) text alerts. Will always remain hidden.</small>
+          {% include 'user/mobile.html' %}
         </div>
 
         <div class="form-group col-md-6">
-          <label for="id_image">Image:</label> 
-          <input type="file" name="image" class="form-control-file" name="image" accept="image/*" id="id_image">
+          {% include 'user/image.html' %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          {% include 'user/favorite_team.html' %}
+        </div>
+        <div class="form-group col-md-6">
+          {% include 'user/timezone.html' %}
         </div>
       </div>
   
       <div class="form-row">
         <div class="form-group col-md-6">
-          {% if form.password1.errors %}
-            <label for="{{ form.password1.id_for_label }}" style="color:#dc3545;">Password</label>    
-            <input type="password" name="password1" class="form-control is-invalid" aria-describedby="inputGroupPrepend7" autocomplete="new-password" required id="id_password1">
-            <div class="invalid-feedback">
-              {{ form.password1.errors }}
-            </div>
-          {% else %}
-            <label for="{{ form.password1.id_for_label }}">Password</label>    
-            <input type="password" name="password1" class="form-control" autocomplete="new-password" required id="id_password1">
-            <small id="password1Help" class="form-text text-muted">Your password must contain at least 8 characters, can't be a commonly used password and can't be entirely numeric.</small>
-          {% endif %}     
+          {% include 'user/password1.html' %}     
         </div>
   
         <div class="form-group col-md-6">
-          {% if form.password2.errors %}
-            <label for="{{ form.password2.id_for_label }}" style="color:#dc3545;">Confirm Password</label>    
-            <input type="password" name="password2" class="form-control is-invalid" aria-describedby="inputGroupPrepend8" autocomplete="new-password" required id="id_password2">
-            <div class="invalid-feedback">
-              {{ form.password2.errors }}
-            </div>
-          {% else %}
-            <label for="{{ form.password2.id_for_label }}">Confirm Password</label>    
-            <input type="password" name="password2" class="form-control" autocomplete="new-password" required id="id_password2">
-            <small id="password2Help" class="form-text text-muted">Enter the same password as before, for verification.</small>
-          {% endif %}     
+          {% include 'user/password2.html' %}   
         </div>
       </div>
       

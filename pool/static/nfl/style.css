@@ -1,7 +1,14 @@
-body {
+/* body {
     background-color: lightblue;
 }
 
 .mystyle {
     color: red;
+} */
+
+.highlight-user {
+    background-color: gold;
+    font-weight: bold;
+    padding-left: 3px;
+    padding-right: 3px;
 }
