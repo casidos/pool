@@ -7,7 +7,14 @@
 
 <h2 class="mt-1 mb-4"><i class="fas fa-file-signature"></i> Rules</h2>
 
-<div class="row">   
+<div class="row">
+  <div class="col-10">
+    {% include 'rules/rules_loop.html' %}
+  </div>
+</div> 
+{% include 'rules/rules_pagination.html' %}
+
+{% comment %} <div class="row">   
     
     <div class="col-md-8">
         
@@ -24,6 +31,6 @@
         
     </div>
 
-</div><!--END ROW-->
+</div><!--END ROW--> {% endcomment %}
 
 {% endblock %}

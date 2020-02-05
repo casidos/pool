@@ -1,0 +1,18 @@
+<table class="table table-sm table-striped table-borderless">
+    <thead>
+        <tr class="bg-primary text-white">
+            <th style="text-align:center;">&nbsp;</th>
+            <th>Details</th>
+            <th style="text-align:center;">Fav Team</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for item in page_obj %}
+    <tr style="border-bottom:1px solid silver;">
+        <td style="width:20%;text-align:center;">{% include 'members/member_pic.html' %}</td>
+        <td>{% include 'members/member_detail.html' %}</td>
+        <td style="width:20%;text-align:center;">{% include 'members/fav_team.html' %}</td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>

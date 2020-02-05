@@ -1,0 +1,8 @@
+<strong data-toggle="tooltip" data-placement="top" title="{{item.user.username}}">{{item.user.username | truncatechars:11}}</strong>
+<div class="media m-2 p-2 justify-content-center">
+{% if item.user.image and item.user.image.url %}
+    <img src="/pool{{item.user.image.url}}" class="mr-3" alt="No Image Found" width="64" style="border:1px solid gray;">
+{% else %}
+    <img class="mr-4" src="../../static/nfl/NFL.gif" alt="" width="64" style="border:1px solid gold;">
+{% endif %}
+</div>

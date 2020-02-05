@@ -1,5 +1,3 @@
-#pool/views.py
-import pytz
 from django.http import QueryDict
 from django.urls import reverse_lazy
 from django.shortcuts import render, get_object_or_404, redirect
@@ -9,6 +7,8 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils import timezone
+import pytz
 from datetime import date
 import datetime
 from .models import *
@@ -17,6 +17,7 @@ from django.core.mail import send_mail, send_mass_mail
 from django.http import HttpResponse
 from django.conf import settings
 from django.template import RequestContext
+from django.db.models.functions import Lower
 
 def get_users_no_picks(request):
     args = get_current(request)
@@ -83,21 +84,27 @@ class EditUser(LoginRequiredMixin, UpdateView):
         return super(EditUser, self).form_valid(form)
 
 class TalkView(LoginRequiredMixin, TemplateView):
-    template_name = 'talk.html'
+    template_name = 'talk/talk.html'
     context_object_name = 'talk'
     form_class = TalkForm
     success_url = '/talk'
     
     def get(self, request):
-        current_season = Season.objects.filter(is_active=True).latest('effective_date')
-        seasons = Season.objects.order_by('-effective_date')
-        queryset = Talk.objects.order_by('-effective_date')
-        form = TalkForm()
-        args = {'form': form, 'talk' : queryset, 'current_season' : current_season, 'seasons' : seasons}
-        return render(request, self.template_name, args)    
+                  
+        args = get_current(request)
+        items = Talk.objects.order_by('-effective_date')
+        paginator = Paginator(items, 6)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
+        args.update({'talk' : items})
+        args.update({'page_obj' : page_obj})
+
+        return render(request, self.template_name, args) 
 
     def post(self, request):
         form = TalkForm(request.POST)
+        
         if form.is_valid():
             talk = form.save(commit=False)
             talk.user = request.user
@@ -105,10 +112,16 @@ class TalkView(LoginRequiredMixin, TemplateView):
             talk.effective_end_date = datetime.datetime.now() + timedelta(days=21)
             talk.save()
         
-        form = TalkForm()
-        queryset = Talk.objects.order_by('-effective_date')
-        args = {'form': form, 'talk' : queryset}
-        return render(request, self.template_name, args)    
+        args = get_current(request)
+        items = Talk.objects.order_by('-effective_date')
+        paginator = Paginator(items, 6)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
+        args.update({'talk' : items})
+        args.update({'page_obj' : page_obj})
+
+        return render(request, self.template_name, args) 
 
 @login_required
 def change_password(request):
@@ -154,19 +167,36 @@ class NewsItemsView(LoginRequiredMixin, ListView):
     def get(self, request):    
         
         args = get_current(request)
-        now = datetime.datetime.now()
-        args.update({'items' : NewsItem.objects.filter(effective_date__lte=now, effective_end_date__gte=now)})
+        now = datetime.datetime.now(tz=timezone.utc)
+        # args.update({'items' : NewsItem.objects.filter(effective_date__lte=now, effective_end_date__gte=now)})
+        items = NewsItem.objects.filter(effective_date__lte=now, effective_end_date__gte=now).order_by('-effective_date')
+        paginator = Paginator(items, 8)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
+        args.update({'items' : items})
+        args.update({'page_obj' : page_obj})
 
         return render(request, self.template_name, args)
 
 class RulesView(LoginRequiredMixin, ListView):
-    template_name = 'rules.html'        
+    template_name = 'rules/rules.html'        
 
     def get(self, request):
+        
         args = get_current(request)
 
-        args.update({'items' : Rule.objects.all()})
+        # args.update({'items' : Rule.objects.all()})
         
+        args = get_current(request)
+        items = Rule.objects.all()
+        paginator = Paginator(items, 8)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
+        args.update({'items' : items})
+        args.update({'page_obj' : page_obj})
+
         return render(request, self.template_name, args)
 
 class WinnersView(LoginRequiredMixin, ListView):
@@ -186,7 +216,7 @@ class WinnersView(LoginRequiredMixin, ListView):
         return render(request, self.template_name, args)
 
 class FeesView(LoginRequiredMixin, ListView):
-    template_name = 'fees.html'        
+    template_name = 'fees/fees.html'        
 
     def get(self, request):     
         
@@ -284,15 +314,14 @@ def delete_talk(request, pk):
     return redirect('talk')
 
 class PoolMembers(LoginRequiredMixin, ListView):
-     template_name = 'pool_members.html'    
+     template_name = 'members/members.html'    
 
      def get(self, request): 
 
         args = get_current(request)
 
-        # items = CustomUser.objects.exclude(is_superuser=True).order_by('username')
-        items = CustomUser.objects.all().order_by('username')
-        paginator = Paginator(items, 3) # Show 25 members per page.
+        items = CustomUser.objects.all().order_by(Lower('username'))
+        paginator = Paginator(items, 8) # Show 25 members per page.
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 
@@ -435,7 +464,7 @@ def get_picks_args(request, week_id, week_type_id):
 
     games = Game.objects.filter(week_id = selected_week.id) 
    
-    picks = Pick.objects.prefetch_related('game_id__week_id').filter(game_id__week_id = selected_week.id, user_id = request.user.id).order_by('game__start_time')
+    picks = Pick.objects.prefetch_related('game_id__week_id').filter(game_id__week_id = selected_week.id, user_id = request.user.id).order_by('game__number')
 
     args.update({'picks' : picks})
     args.update({'pick_types' : PickType.objects.filter(id__gt = 3).order_by('id')})

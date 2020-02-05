@@ -9,15 +9,26 @@
 
 {% block body %}
 
-{% comment %} <div class="py-3 text-center">
-    <h2>{{customUser.username}}</h2>
-    <p class="lead">Edit your profile below.</p>
-  </div> {% endcomment %}
+  <div class="py-3 text-center">
+      <h2>{{customUser.username}}</h2>
+      <p class="lead">Edit your profile below.</p>
+  </div>
 
   <div class="row justify-content-center py-3">
-    <div class="col-5">
+  
+    <div class="col-7">
 
+    
     <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Update</button>
+    </form> 
+    
+
+   
+
+    {% comment %} <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
       <div class="form-row">
@@ -39,7 +50,7 @@
           
         </div><!--MEDIA-->
 
-      </form>
+      </form> {% endcomment %}
     </div>
   </div>
 

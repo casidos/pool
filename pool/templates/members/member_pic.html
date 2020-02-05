@@ -1,0 +1,7 @@
+<div class="media m-2 p-2 justify-content-center">
+{% if item.image and item.image.url %}
+    <img src="/pool{{item.image.url}}" class="mr-3" alt="No Image Found" width="64" style="border:1px solid gray;">
+{% else %}
+    <img class="mr-4" src="../../static/nfl/NFL.gif" alt="" width="64" style="border:1px solid gold;">
+{% endif %}
+</div>

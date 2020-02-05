@@ -1,0 +1,5 @@
+{% load humanize %}
+<div id="cityStadiumRow" class="row table-active p-1">
+    <div id="cityStadiumRowCityStadium" class="col-lg text-left">{{item.game.number}}) {{item.game.city.name}} - {{item.game.city.stadium}}</div><!--END STADIUM COL 1-->
+    <div id="cityStadiumRowColFieldCapacity" class="col-lg text-right">Field: {{item.game.city.stadium.surface.name}}, Capacity: {{item.game.city.stadium.capacity|intcomma}}</div><!--END STADIUM COL 2-->
+</div><!--STADIUM ROW-->

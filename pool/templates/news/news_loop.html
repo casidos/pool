@@ -1,0 +1,24 @@
+<table class="table table-sm table-striped table-borderless">
+    <thead>
+        <tr class="bg-primary text-white">
+            <th style="text-align:center;">Posted</th>
+            <th colspan="2">Message</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for item in page_obj %}
+    <tr style="border-bottom:1px solid silver;">
+        <td style="width:18%;text-align:center;">
+            <small id="effHelp" class="form-text text-muted font-italic">{{item.effective_date|date:'l, M d g:i a'}}</small>
+        </td>
+        <td>
+            <strong>{{item.title}}</strong>
+            <p>{{item.message}}</p>
+        </td>
+        <td style="width:18%;text-align:right;vertical-align:bottom;">
+            <small id="effEndHelp" class="form-text text-muted font-italic">{{item.effective_end_date|date:'l, M d g:i a'}}</small>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>

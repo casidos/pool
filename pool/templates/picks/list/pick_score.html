@@ -1,0 +1,9 @@
+{% if item.game.is_complete %}
+    {% if item.score > 0 %}
+        <strong>{{item.score}}</strong>
+    {% else %}
+    <span>0</span>
+    {% endif %} 
+{% else %}
+    0
+{% endif %} 

@@ -1,0 +1,9 @@
+<small id="effEndHelp" class="form-text text-muted font-italic">{{item.effective_date|date:'l, M d g:i a'}}</small>
+<p>
+{{item.message}}
+</p>
+{% if item.user.id == request.user.id %}
+<p style="vertical-align:bottom;text-align:right;">
+<a href="{% url 'delete_talk' pk=item.id %}" class="btn btn-sm btn-outline-danger"><i class="far fa-trash-alt"></i></a>
+</p>
+{% endif %}

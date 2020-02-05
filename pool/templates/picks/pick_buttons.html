@@ -1,0 +1,47 @@
+{% if item.game.is_not_yet_started %}
+    <div class="btn-group">
+        {% if item.pick_type.id == 2 %}
+            <button class="btn btn-outline-primary btn-sm dropdown-toggle" style="color:{{item.game.home_team.color_01}};border-color:{{item.game.home_team.color_01}};" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="../../static/nfl/small/{{item.game.home_team.small_image_name}}" class="mr-1"  alt="NFL Logo" width="20" height="20"> {{item.game.home_team.name}}
+            </button>
+        {% elif item.pick_type.id == 3 %}
+            <button class="btn btn-outline-primary btn-sm dropdown-toggle" style="color:{{item.game.visiting_team.color_01}};border-color:{{item.game.visiting_team.color_01}};" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="../../static/nfl/small/{{item.game.visiting_team.small_image_name}}" class="mr-1"  alt="NFL Logo" width="20" height="20"> {{item.game.visiting_team.name}}
+            </button>
+        {% elif item.pick_type.id == 4 %}
+            <button class="btn btn-outline-warning btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Within Three
+            </button>
+        {% elif item.pick_type.id == 5 %}
+            <button class="btn btn-outline-success btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Regulation Tie
+            </button>
+        {% elif item.pick_type.id == 6 %}
+            <button class="btn btn-outline-danger btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Overtime Tie
+            </button>
+        {% else %}
+            <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                No Pick
+
+            </button>
+        {% endif %}
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="/make_pick/{{item.id}}/3" style="color:{{item.game.visiting_team.color_01}};">{{item.game.visiting_team.name}}</a>
+            <a class="dropdown-item" href="/make_pick/{{item.id}}/2" style="color:{{item.game.home_team.color_01}};">{{item.game.home_team.name}}</a>
+            <a class="dropdown-item" href="/make_pick/{{item.id}}/4">Within Three</a>
+            <a class="dropdown-item" href="/make_pick/{{item.id}}/5">Regulation Tie</a>
+            <a class="dropdown-item" href="/make_pick/{{item.id}}/6">Overtime Tie</a>
+        </div>
+    </div>
+{% else %}
+    <button class="btn btn-secondary btn-sm" type="button">
+        {% if item.pick_type.id == 2 %}
+            {{item.game.home_team.name}}
+        {% elif item.pick_type.id == 3 %}
+            {{item.game.visiting_team.name}}
+        {% else %}
+            {{item.pick_type.name}}
+        {% endif %}
+    </button>
+{% endif %}

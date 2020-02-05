@@ -7,12 +7,12 @@
 
 <h2 class="mt-1 mb-4"><i class="fas fa-hand-holding-usd"></i> Fees</h2>
 
-<div class="row">   
+<div class="row">
     
     <div class="col-md-8">
-        <table class="table">
+        <table class="table table-sm table-striped table-borderless">
         <thead>
-            <tr>
+            <tr class="bg-primary text-white">
             <th>Amount</th>
             <th>Country</th>
             <th>Local $</th>
@@ -22,12 +22,12 @@
         </thead>
         <tbody>
         {% for item in items %}
-            <tr>
-                <td>{{item.amount}}</td>
+            <tr style="border-bottom:1px solid silver;">
+                <td>${{item.amount}}</td>
                 <td>{{item.country.name}}</td>
-                <td>{{item.local_amount}}</td>
+                <td>${{item.local_amount}}</td>
                 <td>{{item.exchange_source}}</td>
-                <td>{{item.exchange_rate_date}}</td>
+                <td>{{item.exchange_rate_date|date:'l, M d'}}</td>
             </tr>
         {% endfor %}
         </tbody>

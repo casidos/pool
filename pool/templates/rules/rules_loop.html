@@ -1,0 +1,19 @@
+<table class="table table-sm table-striped table-borderless">
+    <thead>
+        <tr class="bg-primary text-white">
+            <th>Rule</th>
+            <th style="text-align:center;">Points</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for item in page_obj %}
+    <tr style="border-bottom:1px solid silver;">
+        <td>
+            <strong>{{item.title}}</strong>
+            <p>{{item.message}}</p>
+        </td>
+        <td style="width:18%;text-align:center;vertical-align:middle;">{{item.points}}</td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>

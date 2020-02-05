@@ -1,0 +1,7 @@
+<div class="media m-2 p-2 justify-content-center">
+{% if item.favorite_team %}
+    <img src="../../static/nfl/small/{{item.favorite_team.small_image_name}}" class="mr-3"  alt="NFL Logo" width="46" height="46">
+{% else %}
+    &nbsp;
+{% endif %}
+</div>
