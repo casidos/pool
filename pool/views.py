@@ -168,7 +168,6 @@ class NewsItemsView(LoginRequiredMixin, ListView):
         
         args = get_current(request)
         now = datetime.datetime.now(tz=timezone.utc)
-        # args.update({'items' : NewsItem.objects.filter(effective_date__lte=now, effective_end_date__gte=now)})
         items = NewsItem.objects.filter(effective_date__lte=now, effective_end_date__gte=now).order_by('-effective_date')
         paginator = Paginator(items, 8)
         page_number = request.GET.get('page')
@@ -183,10 +182,6 @@ class RulesView(LoginRequiredMixin, ListView):
     template_name = 'rules/rules.html'        
 
     def get(self, request):
-        
-        args = get_current(request)
-
-        # args.update({'items' : Rule.objects.all()})
         
         args = get_current(request)
         items = Rule.objects.all()
@@ -204,7 +199,6 @@ class WinnersView(LoginRequiredMixin, ListView):
     
     def get(self, request):
 
-        # selected_week_type_id = request.session['selected_week_type_id']
         if not 'selected_week_type_id' in request.session:        
             selected_week_type_id = 1
             request.session['selected_week_type_id'] = 1
