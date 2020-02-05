@@ -1,1 +1,10 @@
-{{item.game.game_status.name|upper}}
+{% if item.game.is_not_yet_started %}
+    Not Yet Started
+{% elif item.game.is_complete %}
+    FINAL
+{% elif item.game.is_underway %}
+    <span class="highlight-user">UNDERWAY</span>
+{% else %}
+    Else: {{item.game.game_status.name|upper}}    
+{% endif %}
+

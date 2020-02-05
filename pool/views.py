@@ -31,7 +31,7 @@ def get_users_no_picks(request):
     return users
 
 def standings_view(request):
-    template = 'standings.html'
+    template = 'standings/standings.html'
 
     if not 'selected_week_type_id' in request.session:        
         selected_week_type_id = 1
@@ -195,7 +195,7 @@ class RulesView(LoginRequiredMixin, ListView):
         return render(request, self.template_name, args)
 
 class WinnersView(LoginRequiredMixin, ListView):
-    template_name = 'winners.html'
+    template_name = 'winners/winners.html'
     
     def get(self, request):
 
@@ -229,7 +229,7 @@ def change_layout_type_for_picks(request, pk):
     
 @login_required
 def change_layout_type_for_winners(request, pk):
-    template_name = 'winners.html'
+    template_name = 'winners/winners.html'
     selected_page_layout_type = PageLayoutType.objects.get(pk=pk)
     Preferences.objects.filter(user_id=request.user.id).update(winners_page_layout_type_id=selected_page_layout_type.id)
     return redirect('winners')
@@ -253,7 +253,7 @@ def change_week_type_for_picks(request, pk):
     
 @login_required
 def change_week_type_for_winners(request, pk):
-    template_name = 'winners.html' 
+    template_name = 'winners/winners.html' 
     
     request.session['selected_week_type_id'] = pk       
     
@@ -261,7 +261,7 @@ def change_week_type_for_winners(request, pk):
     
 @login_required
 def change_week_type_for_standings(request, pk):
-    template_name = 'standings.html' 
+    template_name = 'standings/standings.html' 
     
     request.session['selected_week_type_id'] = pk
 
@@ -292,6 +292,8 @@ class PicksView(LoginRequiredMixin, TemplateView):
 @login_required
 def make_pick(request, pk, pt_pk):
     pick = Pick.objects.get(pk=pk)
+    pick.last_saved_date = get_now()
+    pick.save()
     pick_type = PickType.objects.get(pk=pt_pk)
     pick.pick_type = pick_type
     Pick.objects.filter(id=pk).update(pick_type_id = pt_pk)

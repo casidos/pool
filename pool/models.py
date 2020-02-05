@@ -338,7 +338,9 @@ class Game(models.Model):
 
     def is_complete(self):
         scores_are_not_zeroes = self.home_score != 0 and self.visitor_score != 0
-        return has_start_time_passed(self.start_time) and scores_are_not_zeroes
+        time_passed = has_start_time_passed(self.start_time)
+        so_what = time_passed and scores_are_not_zeroes
+        return so_what
 
     def is_underway(self):
         scores_are_zeroes = self.home_score == 0 and self.visitor_score == 0

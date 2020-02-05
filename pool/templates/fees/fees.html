@@ -12,7 +12,11 @@
     <div class="col-md-8">
         <table class="table table-sm table-striped table-borderless">
         <thead>
-            <tr class="bg-primary text-white">
+            {% if user.favorite_team %}
+                <tr style="background-color:{{user.favorite_team.color_01}};color:{{user.favorite_team.color_03}};border-color:{{user.favorite_team.color_03}}">
+            {% else %}
+                <tr class="bg-primary text-white">
+            {% endif %}
             <th>Amount</th>
             <th>Country</th>
             <th>Local $</th>

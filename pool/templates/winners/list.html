@@ -1,6 +1,10 @@
 <div class="row m-1">
     <div class="col-lg">
-        <div class="row p-1 mt-2 mb-2 bg-primary text-white">
+        {% if user.favorite_team %}
+            <div class="row p-1 mt-2 mb-2" style="background-color:{{user.favorite_team.color_01}};color:{{user.favorite_team.color_03}};border-color:{{user.favorite_team.color_03}}">
+        {% else %}
+            <div class="row p-1 mt-2 mb-2 bg-primary text-white">
+        {% endif %}         
             {% if item.week %}
                 <div class="col-lg text-left">{{item.week.name}}</div>   
             {% else %}

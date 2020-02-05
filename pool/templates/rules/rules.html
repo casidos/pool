@@ -12,25 +12,6 @@
     {% include 'rules/rules_loop.html' %}
   </div>
 </div> 
-{% include 'rules/rules_pagination.html' %}
-
-{% comment %} <div class="row">   
-    
-    <div class="col-md-8">
-        
-        {% for item in items %}
-        <table class="table">
-        <tr class="table-active">
-            <th>{{item.title}}</th>
-        </tr>
-        <tr>
-            <td>{{item.message}}</td>
-        </tr>        
-        </table>
-        {% endfor %}
-        
-    </div>
-
-</div><!--END ROW--> {% endcomment %}
+{% include 'pagination.html' %}
 
 {% endblock %}

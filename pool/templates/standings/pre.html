@@ -1,21 +1,26 @@
 <table class="table table-sm table-striped table-bordered table-hover">
-        <thead>
+    <thead>
+    {% if user.favorite_team %}
+        <tr style="background-color:{{user.favorite_team.color_01}};color:{{user.favorite_team.color_03}};border-color:{{user.favorite_team.color_03}}">
+    {% else %}
         <tr class="bg-primary text-white">
-            <th>Name</th>
-            <th>Overall</th>
-            <th colspan="6">Preseason</th>
-        </tr>
-        <tr class="table-active">
-            <th>Poolee</th>
-            <th>Tot</th>
-            <th>HOF</th>
-            <th>Wk 1</th>
-            <th>Wk 2</th>
-            <th>Wk 3</th>
-            <th>Wk 4</th>
-            <th>Preseason Total</th>
-        </tr>
-        </thead>
+    {% endif %} 
+        <th>Name</th>
+        <th>Overall</th>
+        <th colspan="6">Preseason</th>
+    </tr>
+    <tr class="table-active">
+        <th>Poolee</th>
+        <th>Tot</th>
+        <th>HOF</th>
+        <th>Wk 1</th>
+        <th>Wk 2</th>
+        <th>Wk 3</th>
+        <th>Wk 4</th>
+        <th>Preseason Total</th>
+    </tr>
+    </thead>
+    <tbody>
         {% for item in items %}
         <tr>
             <td><span {% if request.user.username == item.user.username %} class="highlight-user"{% endif %}>{{item.user.username}}</span></td>
@@ -28,4 +33,5 @@
             <td>{{item.pre_total}}</td>    
         </tr>        
         {% endfor %}
-        </table>
+    </tbody>
+</table>

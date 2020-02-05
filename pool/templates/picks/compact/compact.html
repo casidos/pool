@@ -1,0 +1,34 @@
+{% for item in picks %}
+{% ifchanged item.game.start_time %}
+    {% if user.favorite_team %}
+        <div class="row p-1 mt-2 mb-2" style="background-color:{{user.favorite_team.color_01}};color:{{user.favorite_team.color_03}};border-color:1px solid {{user.favorite_team.color_03}}"><!--START TIME ROW-->
+    {% else %}
+        <div class="row p-1 mt-2 mb-2 bg-primary text-white">
+    {% endif %}    
+        <div class="col-lg text-left">
+            <span>{{item.game.start_time |date:'l, M d g:i a'}}</span>
+            <span>{{item.game.start_time |date:'e'}}</span>
+        </div>
+    </div>
+{% endifchanged %}
+
+<div class="row p-1">
+    {% if item.pick_type.id == 2 %}
+        {% include 'picks/compact/home_pick.html' %}
+    {% elif item.pick_type.id == 3 %}
+        {% include 'picks/compact/visitor_pick.html' %}
+    {% elif item.pick_type.id == 4 %}
+        {% include 'picks/compact/within_three.html' %}
+    {% elif item.pick_type.id == 5 %}
+        {% include 'picks/compact/regulation_tie.html' %}
+    {% elif item.pick_type.id == 6 %}
+        {% include 'picks/compact/overtime_tie.html' %}
+    {% else %}
+        {% include 'picks/compact/no_pick.html' %}
+    {% endif %}
+    {% comment %} <div class="col-12 justify-content-end">
+        <small id="newsHelp" class="form-text text-muted text-right" style="font-style:italic;">Saved: {{item.last_saved_date}}</small>        
+    </div> {% endcomment %}
+</div>
+
+{% endfor %}

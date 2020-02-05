@@ -2,8 +2,9 @@
     {% if item.score > 0 %}
         <strong>{{item.score}}</strong>
     {% else %}
-    <span>0</span>
+        <span>0</span>
     {% endif %} 
 {% else %}
     0
 {% endif %} 
+{% comment %} <small id="scoreHelp" class="form-text text-muted text-right font-italic" >{{item.last_saved_date}}</small> {% endcomment %}

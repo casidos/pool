@@ -1,0 +1,24 @@
+{% for item in picks %}
+<div class="row">
+    <div class="col">
+        <div class="row">
+            <div class="col">
+                {% include 'picks/list/start_time_row.html' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% include 'picks/list/stadium_row.html' %}
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col"> 
+                {% include 'picks/list/pick_details_row.html' %}
+            </div>
+            <div class="col"> 
+                <small id="scoreHelp" class="form-text text-muted text-right font-italic" >{{item.last_saved_date}}</small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}

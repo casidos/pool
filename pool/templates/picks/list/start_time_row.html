@@ -1,8 +1,12 @@
 {% ifchanged item.game.start_time %}
-<div id="gameDateTimeRow" class="row p-1 mt-2 mb-2 bg-primary text-white"><!--START TIME ROW-->
-    <div id="gameDateTimeRowColumn" class="col-lg text-left"><!--START TIME COL-->
-        <span>{{item.game.start_time |date:'l, M d g:i a'}}</span>
-        <span>{{item.game.start_time |date:'e'}}</span>
-    </div><!--END START TIME COL-->
-</div><!--END START TIME ROW-->
+    {% if user.favorite_team %}
+        <div class="row p-1 mt-2 mb-2" style="background-color:{{user.favorite_team.color_01}};color:{{user.favorite_team.color_03}};border-color:{{user.favorite_team.color_03}}"><!--START TIME ROW-->
+    {% else %}
+        <div class="row p-1 mt-2 mb-2 bg-primary text-white"><!--START TIME ROW-->
+    {% endif %}    
+        <div class="col-lg text-left"><!--START TIME COL-->
+            <span>{{item.game.start_time |date:'l, M d g:i a'}}</span>
+            <span>{{item.game.start_time |date:'e'}}</span>
+        </div><!--END START TIME COL-->
+    </div><!--END START TIME ROW-->
 {% endifchanged %}

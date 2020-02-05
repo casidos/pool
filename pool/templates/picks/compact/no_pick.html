@@ -1,0 +1,27 @@
+<div class="col-1">
+    {{item.game.number}})
+</div>
+<div class="col-1">
+    <a href="/make_pick/{{item.id}}/3" class="btn btn-sm btn-outline-warning" style="color:{{item.game.visiting_team.color_01}};border-color:{{item.game.visiting_team.color_01}};">{{item.game.visiting_team.nick_name}}</a>
+</div>
+<div class="col-1">
+    @
+</div>
+<div class="col-1">
+    <a href="/make_pick/{{item.id}}/2" class="btn btn-sm btn-outline-warning" style="color:{{item.game.home_team.color_01}};border-color:{{item.game.home_team.color_01}};">{{item.game.home_team.nick_name}}</a>
+</div>
+<div class="col-1">
+    <a href="/make_pick/{{item.id}}/4" class="btn btn-sm btn-outline-warning"><=3</a>
+</div>
+<div class="col-1">
+    <a href="/make_pick/{{item.id}}/5" class="btn btn-sm btn-outline-success">Reg Tie</a>
+</div>
+<div class="col-1">
+    <a href="/make_pick/{{item.id}}/6" class="btn btn-sm btn-outline-danger">OT</a>
+</div>
+<div class="col-1">
+    {{item.score}}
+</div>
+<div class="col-4">        
+    <small id="newsHelp" class="form-text text-muted text-right" style="font-style:italic;">Saved: {{item.last_saved_date}}</small>        
+</div>

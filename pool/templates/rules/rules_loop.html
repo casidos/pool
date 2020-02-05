@@ -1,9 +1,20 @@
 <table class="table table-sm table-striped table-borderless">
     <thead>
-        <tr class="bg-primary text-white">
+        {% if user.favorite_team %}
+            <tr style="background-color:{{user.favorite_team.color_01}};color:{{user.favorite_team.color_03}};border-color:{{user.favorite_team.color_03}}">
+                <th>Rule</th>
+                <th style="text-align:center;">Points</th>
+            </tr>
+        {% else %}
+            <tr class="bg-primary text-white">
+                <th>Rule</th>
+                <th style="text-align:center;">Points</th>
+            </tr>
+        {% endif %} 
+        {% comment %} <tr class="bg-primary text-white">
             <th>Rule</th>
             <th style="text-align:center;">Points</th>
-        </tr>
+        </tr> {% endcomment %}
     </thead>
     <tbody>
 {% for item in page_obj %}

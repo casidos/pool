@@ -5,10 +5,12 @@ def get_now():
     return timezone.now()
 
 def has_start_time_passed(start_time):
-    return start_time < get_now() 
+    now = get_now() 
+    return start_time < now
 
 def is_game_not_yet_started(start_time):
-    return start_time > get_now()
+    now = get_now()
+    return start_time > now
 
 def is_underway(start_time, is_over):
     

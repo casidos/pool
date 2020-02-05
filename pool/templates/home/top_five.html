@@ -1,11 +1,19 @@
 <h5><i class="fas fa-sort-amount-up"></i> Top 5 {{current_week.name}}</h5>
 <table class="table table-sm table-striped table-bordered">
     <thead>        
-        <tr class="bg-primary text-white">
-            <th>Rank</th>
-            <th>Poolee</th>
-            <th>Score</th>
-        </tr>
+        {% if user.favorite_team %}
+            <tr style="background-color:{{user.favorite_team.color_01}};color:{{user.favorite_team.color_03}};border-color:{{user.favorite_team.color_03}}">
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        {% else %}
+            <tr class="bg-primary text-white">
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        {% endif %}        
     </thead>
     <tbody>
     {% for item in standings %}

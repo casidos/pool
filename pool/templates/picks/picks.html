@@ -21,11 +21,11 @@
 <div class="row">
   <div class="col-12">
     {% if preferences.picks_page_layout_type.id == 1 %}
-      {% include 'picks/list.html' %}
+      {% include 'picks/list/list.html' %}
     {% elif preferences.picks_page_layout_type.id == 2 %}
-      {% include 'picks/grid.html' %}
+      {% include 'picks/grid/grid.html' %}
     {% else %}
-      {% include 'picks/compact.html' %}  
+      {% include 'picks/compact/compact.html' %}  
     {% endif %}        
   </div><!--OUTER PICKS COL-->
 </div><!--OUTER PICKS ROW-->

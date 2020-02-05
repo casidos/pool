@@ -1,6 +1,10 @@
 <table class="table table-sm table-striped table-bordered table-hover">
         <thead>
-        <tr class="bg-primary text-white">
+        {% if user.favorite_team %}
+            <tr style="background-color:{{user.favorite_team.color_01}};color:{{user.favorite_team.color_03}};border-color:{{user.favorite_team.color_03}}">
+        {% else %}
+            <tr class="bg-primary text-white">
+        {% endif %} 
             <th>Name</th>
             <th>Overall</th>
             <th colspan="18">Regular Season</th>

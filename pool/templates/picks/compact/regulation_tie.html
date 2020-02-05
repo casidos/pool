@@ -1,0 +1,12 @@
+<div class="col-1">{{item.game.number}})</div>
+<div class="col">
+    <a href="/make_pick/{{item.id}}/3" class="btn btn-sm btn-outline-warning" style="color:{{item.game.visiting_team.color_01}};border-color:{{item.game.visiting_team.color_01}};">{{item.game.visiting_team.short_nick_name}}</a>
+    <button class="btn btn-sm btn-light">{{item.game.visitor_score}}</button>
+    {% include 'picks/compact/at.html' %}
+    <a href="/make_pick/{{item.id}}/2" class="btn btn-sm btn-outline-warning" style="color:{{item.game.home_team.color_01}};border-color:{{item.game.home_team.color_01}};">{{item.game.home_team.short_nick_name}}</a>
+    <button class="btn btn-sm btn-light">{{item.game.home_score}}</button>
+    <a href="/make_pick/{{item.id}}/4" class="btn btn-sm btn-outline-warning"><4</a>
+    <a href="/make_pick/{{item.id}}/5" class="btn btn-sm btn-success">RT</a>
+    <a href="/make_pick/{{item.id}}/6" class="btn btn-sm btn-outline-danger">OT</a>
+    <button class="btn btn-sm btn-light">{{item.score}}</button>
+</div>

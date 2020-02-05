@@ -1,10 +1,23 @@
 <table class="table table-sm table-striped table-borderless">
-<thead class="bg-primary text-white">
-    <tr>
-        <th>Member</th>
-        <th>Talk</th>
-    </tr>
-</thead>
+    <thead>
+    {% if user.favorite_team %}
+        <tr style="background-color:{{user.favorite_team.color_01}};color:{{user.favorite_team.color_03}};border-color:{{user.favorite_team.color_03}}">
+            <th>Member</th>
+            <th>Talk</th>
+        </tr>
+    {% else %}
+        <tr class="bg-primary text-white">
+            <th>Member</th>
+            <th>Talk</th>
+        </tr>
+    {% endif %} 
+    {% comment %} <thead class="bg-primary text-white">
+        <tr>
+            <th>Member</th>
+            <th>Talk</th>
+        </tr>
+     {% endcomment %}
+     </thead>
 <tbody>
 {% for item in page_obj %}
     <tr>
