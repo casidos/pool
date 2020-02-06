@@ -8,10 +8,10 @@
       {% endif %}
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-      <a class="dropdown-item" href="/change_week_type_for_winners/1">Preseason</a>
-      <a class="dropdown-item" href="/change_week_type_for_winners/2">Regular Season</a>
-      <a class="dropdown-item" href="/change_week_type_for_winners/3">Post-Season</a>
-      <a class="dropdown-item" href="/change_week_type_for_winners/4">All</a>
+      <a class="dropdown-item" href="{% url 'change_week_type' pk=1 referring_page='winners' %}">Preseason</a>
+      <a class="dropdown-item" href="{% url 'change_week_type' pk=2 referring_page='winners' %}">Regular Season</a>
+      <a class="dropdown-item" href="{% url 'change_week_type' pk=3 referring_page='winners' %}">Post-Season</a>
+      <a class="dropdown-item" href="{% url 'change_week_type' pk=4 referring_page='winners' %}">All</a>
     </div>
   </div>
   <div class="btn-group" role="group" aria-label="Third group">

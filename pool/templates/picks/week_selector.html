@@ -4,9 +4,9 @@
       {{selected_week.week_type.name}}
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-      <a class="dropdown-item" href="/change_week_type_for_picks/1">Preseason</a>
-      <a class="dropdown-item" href="/change_week_type_for_picks/2">Regular Season</a>
-      <a class="dropdown-item" href="/change_week_type_for_picks/3">Post-Season</a>
+      <a class="dropdown-item" href="{% url 'change_week_type' pk=1 referring_page='picks' %}">Preseason</a>
+      <a class="dropdown-item" href="{% url 'change_week_type' pk=2 referring_page='picks' %}">Regular Season</a>
+      <a class="dropdown-item" href="{% url 'change_week_type' pk=3 referring_page='picks' %}">Post-Season</a>
     </div>
   </div>
   <div class="btn-group mr-2" role="group" aria-label="Second group">

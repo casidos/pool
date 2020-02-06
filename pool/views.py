@@ -235,7 +235,6 @@ def change_wide_page_mode(request, w, referring_page):
     
 @login_required
 def change_layout_type_for_winners(request, pk):
-    template_name = 'winners/winners.html'
     selected_page_layout_type = PageLayoutType.objects.get(pk=pk)
     Preferences.objects.filter(user_id=request.user.id).update(winners_page_layout_type_id=selected_page_layout_type.id)
     return redirect('winners')
@@ -247,31 +246,12 @@ def change_selected_week_for_picks(request, pk):
     request.session['selected_week_id'] = pk
 
     return redirect('picks')
-
-@login_required
-def change_week_type_for_picks(request, pk):
-    template_name = 'picks/picks.html' 
     
+@login_required
+def change_week_type(request, pk, referring_page):    
     request.session['selected_week_type_id'] = pk  
-    request.session['selected_week_id'] = 0  
-    
-    return redirect('picks')
-    
-@login_required
-def change_week_type_for_winners(request, pk):
-    template_name = 'winners/winners.html' 
-    
-    request.session['selected_week_type_id'] = pk       
-    
-    return redirect('winners')
-    
-@login_required
-def change_week_type_for_standings(request, pk):
-    template_name = 'standings/standings.html' 
-    
-    request.session['selected_week_type_id'] = pk
-
-    return redirect('standings')
+    request.session['selected_week_id'] = 0 
+    return redirect(referring_page)   
 
 class PicksView(LoginRequiredMixin, TemplateView):
     template_name = 'picks/picks.html'    
