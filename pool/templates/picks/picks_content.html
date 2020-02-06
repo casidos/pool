@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-8">
+        <h2 class="mb-4"><i class="fas fa-clipboard-check"></i> Picks</h2>
+    </div>
+    <div class="col-4">
+        {% include 'picks/week_selector.html' %}
+    </div>
+</div>
+
+<div class="row" id="pageLayoutDiv" style="display:none">
+    <div class="col-12">
+        {% include 'picks/preferences.html' %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        {% if preferences.picks_page_layout_type.id == 1 %}
+        {% include 'picks/list/list.html' %}
+        {% elif preferences.picks_page_layout_type.id == 2 %}
+        {% include 'picks/grid/grid.html' %}
+        {% else %}
+        {% include 'picks/compact/compact.html' %}  
+        {% endif %}        
+    </div><!--OUTER PICKS COL-->
+</div><!--OUTER PICKS ROW-->

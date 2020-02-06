@@ -35,8 +35,13 @@
 {% endblock nav %}
 
     <main role="main" style="padding-top: 3.5rem;">
-        <div class="container">
-        {% block body %}        
+        
+        {% block container_type %}
+            <div class="container">
+        {% endblock container_type %}
+        
+        
+        {% block body %}
             <div style="text-align: center;">
                 <img class="mb-4" src="../../static/nfl/pool.gif" alt="">
                 <p>So, this is awkward. How exactly did you land here?</p>

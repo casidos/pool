@@ -3,11 +3,15 @@
 
 {% block body %}
 
+{% block container_type %}
+  <div class="container{% if preferences.site_width == 'wide' %}-fluid{% endif %}">
+{% endblock %}
+
 <div class="row">
-  <div class="col">
+  <div class="col-sm-8">
     <h2 class="mb-4"><i class="fas fa-trophy"></i> Winners</h2>
   </div>
-  <div class="col">
+  <div class="col-sm-4">
     {% include 'winners/week_selector.html' %}
   </div>
 </div>

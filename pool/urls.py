@@ -32,6 +32,7 @@ urlpatterns = [
     path('change_week_type_for_standings/<pk>', views.change_week_type_for_standings, name='change_week_type_for_standings'),
     path('change_week_type_for_winners/<pk>', views.change_week_type_for_winners, name='change_week_type_for_winners'),
     path('change_layout_type_for_picks/<pk>', views.change_layout_type_for_picks, name='change_layout_type_for_picks'),
+    path('change_wide_page_mode/<w>&<referring_page>', views.change_wide_page_mode, name='change_wide_page_mode'),
     path('change_layout_type_for_winners/<pk>', views.change_layout_type_for_winners, name='change_layout_type_for_winners'),
     path('change_week_type_for_picks/<pk>', views.change_week_type_for_picks, name='change_week_type_for_picks'),    
     path('change_selected_week_for_picks/<pk>', views.change_selected_week_for_picks, name='change_selected_week_for_picks'),

@@ -3,32 +3,11 @@
 {% load tz %}
 {% block body %}
 
-<div class="row">
-  <div class="col">
-    <h2 class="mb-4"><i class="fas fa-clipboard-check"></i> Picks</h2>
-  </div>
-  <div class="col">
-    {% include 'picks/week_selector.html' %}
-  </div>
-</div>
+{% block container_type %}
+  <div class="container{% if preferences.site_width == 'wide' %}-fluid{% endif %}">
+{% endblock %}
 
-<div class="row" id="pageLayoutDiv" style="display:none">
-  <div class="col">
-    {% include 'picks/preferences.html' %}
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-12">
-    {% if preferences.picks_page_layout_type.id == 1 %}
-      {% include 'picks/list/list.html' %}
-    {% elif preferences.picks_page_layout_type.id == 2 %}
-      {% include 'picks/grid/grid.html' %}
-    {% else %}
-      {% include 'picks/compact/compact.html' %}  
-    {% endif %}        
-  </div><!--OUTER PICKS COL-->
-</div><!--OUTER PICKS ROW-->
+{% include 'picks/picks_content.html' %}
 
 {% endblock %}
 

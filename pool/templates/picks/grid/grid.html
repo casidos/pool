@@ -1,21 +1,11 @@
+<div class="row">
 {% for item in picks %}
-<div class="row"><!--LIST OUTERMOST ROW-->
-    <div class="col">
-        <div class="row">
-            <div class="col">
-                {% include 'picks/list/start_time_row.html' %}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                {% include 'picks/list/stadium_row.html' %}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col" style="border:1px solid silver;"> 
-                {% include 'picks/list/pick_details_row.html' %}
-            </div>
-        </div>
-    </div><!--COL-MD THEMED GRID-COL-->  
-</div><!--END LIST OUTERMOST ROW-->
+    <div class="col m-1">
+        {% include 'picks/grid/grid_detail.html' %}
+    </div>
+    {% if forloop.counter|divisibleby:3 %}
+    </div>
+    <div class="row">
+    {% endif %}
 {% endfor %}
+</div> <!--END ROW-->

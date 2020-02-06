@@ -1,0 +1,13 @@
+{% if user.favorite_team %}
+<div class="row mt-1" style="background-color:{{user.favorite_team.color_01}};color:{{user.favorite_team.color_03}};border-color:{{user.favorite_team.color_03}}">
+{% else %}
+<div class="row mt-1 bg-primary text-white">
+{% endif %}    
+    <div class="col-10 text-left">
+        <span>{{item.game.start_time |date:'D, M d g:i a'}}</span>
+        <span>{{item.game.start_time |date:'e'}}</span>
+    </div>
+    <div class="col-2 text-right">
+        <span>{{item.score}}</span>
+    </div>
+</div>

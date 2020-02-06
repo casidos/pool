@@ -1,0 +1,25 @@
+<div class="btn-toolbar justify-content-start mb-3" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-1" role="group" aria-label="Second group">
+    <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle ml-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Wide Page Mode
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+      <a class="dropdown-item" href="{% url 'change_wide_page_mode' w='wide' referring_page='standings' %}">Wide</a>
+      <a class="dropdown-item" href="{% url 'change_wide_page_mode' w='regular' referring_page='standings' %}">Regular</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showElement() {     
+    var isVis = document.getElementById("pageLayoutDiv").style.display;
+    if(isVis === "block"){
+        hideElement();
+    }else{
+        document.getElementById("pageLayoutDiv").style.display = "block";
+    }
+  } 
+  function hideElement() { 
+    document.getElementById("pageLayoutDiv").style.display = "none";
+  } 
+</script>

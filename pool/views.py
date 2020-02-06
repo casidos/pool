@@ -151,7 +151,9 @@ class HomePageView(LoginRequiredMixin, TemplateView):
     def get(self, request): 
         
         #HAS TO EXIST OR WE WOULDN'T BE HERE
-        args = get_current(request)       
+        args = get_current(request)      
+        # print('args at home page:') 
+        # print(args['preferences'].site_width)
 
         args.update({'standings' : Standings.objects.all().order_by('-overall_total')})
         args.update({'template_name' : self.template_name})
@@ -222,10 +224,14 @@ class FeesView(LoginRequiredMixin, ListView):
 
 @login_required
 def change_layout_type_for_picks(request, pk):
-    template_name = 'picks/picks.html'
     selected_page_layout_type = PageLayoutType.objects.get(pk=pk)
     Preferences.objects.filter(user_id=request.user.id).update(picks_page_layout_type_id=selected_page_layout_type.id)
     return redirect('picks')
+
+@login_required
+def change_wide_page_mode(request, w, referring_page):
+    Preferences.objects.filter(user_id=request.user.id).update(site_width=w)    
+    return redirect(referring_page)
     
 @login_required
 def change_layout_type_for_winners(request, pk):
@@ -340,7 +346,6 @@ def get_current(request):
         seasons = get_seasons()
         prefs = get_preferences(request)
         
-    
     except Exception as e:
         print(e)
     

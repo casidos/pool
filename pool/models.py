@@ -492,10 +492,18 @@ class PageLayoutType(models.Model):
         return self.name
 
 class Preferences(models.Model):
+    REGULAR = 'regular'
+    WIDE = 'wide'
+
+    WIDTHS = [
+    (REGULAR, 'regular'),
+    (WIDE, 'wide'),
+    ]
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     picks_page_layout_type = models.ForeignKey(PageLayoutType, on_delete=models.CASCADE, related_name='picks_page_layout_type')
     winners_page_layout_type = models.ForeignKey(PageLayoutType, on_delete=models.CASCADE, blank=False, null=False, default=1, related_name='winners_page_layout_type')
     standings_page_layout_type = models.ForeignKey(PageLayoutType, on_delete=models.CASCADE, blank=False, null=False, default=1, related_name='standings_page_layout_type')
+    site_width = models.CharField(max_length=10, default=WIDE, blank=False, null=False)
 
     def __str__(self):
         return self.picks_page_layout_type.name

@@ -1,0 +1,28 @@
+{% include 'picks/grid/grid_start_time.html' %}
+
+<div class="row align-items-sm-center text-center">
+    <div class="col-3">
+        <span style="text-decoration:underline;">Visitor</span><br/>
+        <img src="../../static/nfl/small/{{item.game.visiting_team.small_image_name}}" class="mr-1"  alt="NFL Logo" width="28" height="28">
+        <br/>
+        {{item.game.visiting_team.nick_name}}
+        <br/>{{item.game.visitor_score}}
+    </div>
+    <div class="col-1"><i class="fas fa-at"></i></div>
+    <div class="col-3">
+        <span style="text-decoration:underline;">Home</span><br/>
+        <img src="../../static/nfl/small/{{item.game.home_team.small_image_name}}" class="mr-1"  alt="NFL Logo" width="28" height="28">
+        <br/>
+        {{item.game.home_team.nick_name}}
+        <br/>{{item.game.home_score}}
+    </div>
+    <div class="col">
+        {% include 'picks/grid/pick_buttons.html' %}
+    </div>
+</div>
+<div class="row justify-content-sm-between align-items-sm-center">
+    <div class="col text-right">
+        {% include 'picks/game_status.html' %}
+    </div>
+</div>
+
