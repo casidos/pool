@@ -1,34 +1,76 @@
 {% for item in picks %}
 {% ifchanged item.game.start_time %}
-    {% if user.favorite_team %}
-        <div class="row p-1 mt-2 mb-2" style="background-color:{{user.favorite_team.color_01}};color:{{user.favorite_team.color_03}};border-color:1px solid {{user.favorite_team.color_03}}"><!--START TIME ROW-->
-    {% else %}
-        <div class="row p-1 mt-2 mb-2 bg-primary text-white">
-    {% endif %}    
-        <div class="col-lg text-left">
-            <span>{{item.game.start_time |date:'l, M d g:i a'}}</span>
-            <span>{{item.game.start_time |date:'e'}}</span>
-        </div>
-    </div>
+   {% if user.favorite_team %}
+       <div class="row p-1 mt-2 mb-2" style="background-color:{{user.favorite_team.color_01}};color:{{user.favorite_team.color_03}};border-color:1px solid {{user.favorite_team.color_03}}"><!--START TIME ROW-->
+   {% else %}
+       <div class="row p-1 mt-2 mb-2 bg-primary text-white">
+   {% endif %}   
+       <div class="col-lg text-left">
+           <span>{{item.game.start_time |date:'l, M d g:i a'}}</span>
+           <span>{{item.game.start_time |date:'e'}}</span>
+       </div>
+   </div>
 {% endifchanged %}
-
-<div class="row p-1">
-    {% if item.pick_type.id == 2 %}
-        {% include 'picks/compact/home_pick.html' %}
-    {% elif item.pick_type.id == 3 %}
-        {% include 'picks/compact/visitor_pick.html' %}
-    {% elif item.pick_type.id == 4 %}
-        {% include 'picks/compact/within_three.html' %}
-    {% elif item.pick_type.id == 5 %}
-        {% include 'picks/compact/regulation_tie.html' %}
-    {% elif item.pick_type.id == 6 %}
-        {% include 'picks/compact/overtime_tie.html' %}
-    {% else %}
-        {% include 'picks/compact/no_pick.html' %}
-    {% endif %}
-    {% comment %} <div class="col-12 justify-content-end">
-        <small id="newsHelp" class="form-text text-muted text-right" style="font-style:italic;">Saved: {{item.last_saved_date}}</small>        
-    </div> {% endcomment %}
+ 
+<div class="row p-1" {% if not item.game.is_not_yet_started %}style="background-color:whitesmoke;"{% endif %}>
+   <div class="col-6">
+       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+           <div class="btn-group btn-group-sm mr-2" role="group" aria-label="First group">
+               <button type="button" class="btn btn-light btn-sm">{{item.game.number}}</button>
+           </div>
+           {% if item.game.is_not_yet_started %}
+               <div class="btn-group btn-group-sm mr-2" role="group" aria-label="First group">
+                   <a style="{% if item.is_visitor_win %}background-color:{{item.game.visiting_team.color_03}};color:{{item.game.visiting_team.color_02}};{% else %}color:{{item.game.visiting_team.color_01}};border:1px solid {{item.game.visiting_team.color_01}};{% endif %}" href="/make_pick/{{item.id}}/3" type="button" class="btn btn-light btn-sm">{{item.game.visiting_team.nick_name}}</a>
+                   <a style="{% if item.is_visitor_win %}background-color:{{item.game.visiting_team.color_03}};color:{{item.game.visiting_team.color_02}};{% else %}color:{{item.game.visiting_team.color_01}};border:1px solid {{item.game.visiting_team.color_01}};{% endif %}" href="/make_pick/{{item.id}}/3" type="button" class="btn btn-light btn-sm">{{item.game.visitor_score}}</a>
+               </div>
+               <div class="btn-group btn-group-sm mr-2" role="group" aria-label="First group">
+                   <button type="button" class="btn btn-light btn-sm">@</button>
+               </div>
+               <div class="btn-group btn-group-sm mr-2" role="group" aria-label="First group">
+                   <a style="{% if item.is_home_win %}background-color:{{item.game.home_team.color_03}};color:{{item.game.home_team.color_02}};{% else %}color:{{item.game.home_team.color_01}};border:1px solid {{item.game.home_team.color_01}};{% endif %}" href="/make_pick/{{item.id}}/2" type="button" class="btn btn-light btn-sm">{{item.game.home_team.nick_name}}</a>
+                   <a style="{% if item.is_home_win %}background-color:{{item.game.home_team.color_03}};color:{{item.game.home_team.color_02}};{% else %}color:{{item.game.home_team.color_01}};border:1px solid {{item.game.home_team.color_01}};{% endif %}" href="/make_pick/{{item.id}}/2" type="button" class="btn btn-light btn-sm">{{item.game.home_score}}</a>
+               </div>
+               <div class="btn-group mr-2" role="group" aria-label="Second group">
+                   <a {% if item.is_within_three %}class="btn btn-warning btn-sm"{% else %}class="btn btn-outline-warning btn-sm"{% endif %} href="/make_pick/{{item.id}}/4" type="button">WT</a>
+                   <a {% if item.is_regulation_tie %}class="btn btn-success btn-sm"{% else %}class="btn btn-outline-success btn-sm"{% endif %} href="/make_pick/{{item.id}}/5" type="button">RT</a>
+                   <a {% if item.is_overtime_tie %}class="btn btn-danger btn-sm"{% else %}class="btn btn-outline-danger btn-sm"{% endif %} href="/make_pick/{{item.id}}/6" type="button">OT</a>
+               </div>
+               <div class="btn-group" role="group" aria-label="Third group">
+               {% if item.score > 0 %}
+                   <button type="button" class="btn btn-success btn-sm">{{item.score}}</button>
+               {% else %}
+                   <button type="button" class="btn btn-light btn-sm">{{item.score}}</button>
+               {% endif %}
+               </div>
+           {% else %}
+               <div class="btn-group btn-group-sm mr-2" role="group" aria-label="First group">
+                   <button disabled="disabled" style="{% if item.is_visitor_win %}background-color:{{item.game.visiting_team.color_03}};color:{{item.game.visiting_team.color_02}};{% else %}color:{{item.game.visiting_team.color_01}};border:1px solid {{item.game.visiting_team.color_01}};{% endif %}" type="button" class="btn btn-light btn-sm">{{item.game.visiting_team.nick_name}}</button>
+                   <button disabled="disabled" style="{% if item.is_visitor_win %}background-color:{{item.game.visiting_team.color_03}};color:{{item.game.visiting_team.color_02}};{% else %}color:{{item.game.visiting_team.color_01}};border:1px solid {{item.game.visiting_team.color_01}};{% endif %}" type="button" class="btn btn-light btn-sm">{{item.game.visitor_score}}</button>
+               </div>
+               <div class="btn-group btn-group-sm mr-2" role="group" aria-label="First group">
+                   <button disabled="disabled" type="button" class="btn btn-light btn-sm">@</button>
+               </div>
+               <div class="btn-group btn-group-sm mr-2" role="group" aria-label="First group">
+                   <button disabled="disabled" style="{% if item.is_home_win %}background-color:{{item.game.home_team.color_03}};color:{{item.game.home_team.color_02}};{% else %}color:{{item.game.home_team.color_01}};border:1px solid {{item.game.home_team.color_01}};{% endif %}" type="button" class="btn btn-light btn-sm">{{item.game.home_team.nick_name}}</button>
+                   <button disabled="disabled" style="{% if item.is_home_win %}background-color:{{item.game.home_team.color_03}};color:{{item.game.home_team.color_02}};{% else %}color:{{item.game.home_team.color_01}};border:1px solid {{item.game.home_team.color_01}};{% endif %}" type="button" class="btn btn-light btn-sm">{{item.game.home_score}}</button>
+               </div>
+               <div class="btn-group mr-2" role="group" aria-label="Second group">
+                   <button disabled="disabled" {% if item.is_within_three %}class="btn btn-warning btn-sm"{% else %}class="btn btn-outline-warning btn-sm"{% endif %} type="button">WT</button>
+                   <button disabled="disabled" {% if item.is_regulation_tie %}class="btn btn-success btn-sm"{% else %}class="btn btn-outline-success btn-sm"{% endif %} type="button">RT</button>
+                   <button disabled="disabled" {% if item.is_overtime_tie %}class="btn btn-danger btn-sm"{% else %}class="btn btn-outline-danger btn-sm"{% endif %} type="button">OT</button>
+               </div>
+               <div class="btn-group" role="group" aria-label="Third group">
+               {% if item.score > 0 %}
+                   <button disabled="disabled" type="button" class="btn btn-success btn-sm">{{item.score}}</button>
+               {% else %}
+                   <button disabled="disabled" type="button" class="btn btn-light btn-sm">{{item.score}}</button>
+               {% endif %}
+               </div>
+           {% endif %}
+          
+       </div>
+   </div>
 </div>
-
+ 
 {% endfor %}
+
