@@ -24,10 +24,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'bf*qme%ye=l&*9!7l$%x#^trp$cqztvnx7dw6fzf+fcuv=gl_&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = socket.gethostname() == 'SESDK258'
+# DEBUG = socket.gethostname() == 'SESDK258'
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ADMINS = [('Lindsay', 'Lindsay.Sutherland@gmail.com')]
+MANAGERS = [('Lindsay', 'Lindsay.Sutherland@gmail.com')]
+EMAIL_HOST = 'localhost'
+# EMAIL_HOST_USER − Login credential for the smtp server.
+EMAIL_HOST_USER = 'Lindsay.Sutherland@gmail.com'
+# EMAIL_HOST_PASSWORD − Password credential for the smtp server.
+EMAIL_PORT = 1025
+
+# EMAIL_USE_TLS or _SSL − True if secure connection.
 
 
 # Application definition
@@ -53,6 +63,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'website.middleware.CurrentWeekMiddleware',
     'website.middleware.TimezoneMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
 ROOT_URLCONF = 'website.urls'
@@ -139,9 +150,6 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
 LOGIN_URL = 'login'
 
-EMAIL_HOST = 'localhost'
-# EMAIL_HOST_USER − Login credential for the smtp server.
-EMAIL_HOST_USER = 'Lindsay.Sutherland@gmail.com'
-# EMAIL_HOST_PASSWORD − Password credential for the smtp server.
-EMAIL_PORT = 1025
-# EMAIL_USE_TLS or _SSL − True if secure connection.
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+DEFAULT_FROM_EMAIL = 'Lindsay.Sutherland@gmail.com'
