@@ -1,5 +1,5 @@
 from django import forms
-from PIL import Image
+# from PIL import Image
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser, Talk, Game, Team, City, Alert, PayerAudit, PickType, Pick, Talk, Winner, Week
