@@ -1,7 +1,7 @@
 from django.http import QueryDict
 from django.urls import reverse_lazy
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, GenericViewError
 from django.views.generic.edit import CreateView, UpdateView, FormView
 from django.contrib.auth.forms import PasswordChangeForm
 from django.core.paginator import Paginator
@@ -14,7 +14,7 @@ import datetime
 from .models import *
 from .forms import CustomUserCreationForm, EditUserForm, TalkForm
 from django.core.mail import send_mail, send_mass_mail
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest, Http404
 from django.conf import settings
 from django.template import RequestContext
 from django.db.models.functions import Lower
@@ -152,9 +152,6 @@ class HomePageView(LoginRequiredMixin, TemplateView):
         
         #HAS TO EXIST OR WE WOULDN'T BE HERE
         args = get_current(request)      
-        # print('args at home page:') 
-        # print(args['preferences'].site_width)
-
         args.update({'standings' : Standings.objects.all().order_by('-overall_total')})
         args.update({'template_name' : self.template_name})
         args.update({'news_items' : NewsItem.objects.order_by('-effective_date')[:3]})
@@ -476,3 +473,4 @@ def send_email_reminder(request):
     send_mass_mail((messages), fail_silently=False)
 
     return redirect('email_reminder')
+
