@@ -3,7 +3,7 @@
 {% load tz %}
 {% block body %}
 
-  <p class="text-right">All times are displayed in your selected <strong>{{request.session.django_timezone}}</strong> Timezone</p>
+  <p class="text-right">All times are displayed in your selected <strong>{{request.session.django_timezone}}</strong> <i class="fas fa-user-clock"></i> Timezone</p>
 
   {% include "home/alerts.html" %}
   

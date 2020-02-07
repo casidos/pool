@@ -34,7 +34,7 @@
                 </li>                
             </ul>
             <form class="form-inline mt-2 mt-md-0">   
-                <a class="btn btn-light mr-2 my-2 my-sm-0" href=""><i class="fas fa-clock"></i> {{request.session.django_timezone}}</a>
+                {% comment %} <a class="btn btn-light mr-2 my-2 my-sm-0" href=""><i class="fas fa-clock"></i> {{request.session.django_timezone}}</a> {% endcomment %}
                 <div class="dropdown dropleft pl-2 pr-2">
                 {% if current_season %}
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownSeason" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
