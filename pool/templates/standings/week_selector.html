@@ -8,10 +8,17 @@
       {% endif %}
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-      <a class="dropdown-item" href="{% url 'change_week_type_for_standings' pk=1 %}">Preseason</a>
+      <a class="dropdown-item" href="{% url 'change_week_type' pk=1 referring_page='standings' %}">Preseason</a>
+      <a class="dropdown-item" href="{% url 'change_week_type' pk=2 referring_page='standings' %}">Regular Season</a>
+      <a class="dropdown-item" href="{% url 'change_week_type' pk=3 referring_page='standings' %}">Post-Season</a>
+      <a class="dropdown-item" href="{% url 'change_week_type' pk=4 referring_page='standings' %}">All</a>
+      {% comment %} <a class="dropdown-item" href="{% url 'change_week_type_for_standings' pk=2 %}">Regular Season</a>
+      <a class="dropdown-item" href="{% url 'change_week_type_for_standings' pk=3 %}">Post-Season</a>
+      <a class="dropdown-item" href="{% url 'change_week_type_for_standings' pk=4 %}">All</a> {% endcomment %}
+      {% comment %} <a class="dropdown-item" href="{% url 'change_week_type_for_standings' pk=1 %}">Preseason</a>
       <a class="dropdown-item" href="{% url 'change_week_type_for_standings' pk=2 %}">Regular Season</a>
       <a class="dropdown-item" href="{% url 'change_week_type_for_standings' pk=3 %}">Post-Season</a>
-      <a class="dropdown-item" href="{% url 'change_week_type_for_standings' pk=4 %}">All</a>
+      <a class="dropdown-item" href="{% url 'change_week_type_for_standings' pk=4 %}">All</a> {% endcomment %}
     </div>
   </div>
   <div class="btn-group" role="group" aria-label="Third group">
