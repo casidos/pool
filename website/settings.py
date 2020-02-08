@@ -25,7 +25,7 @@ SECRET_KEY = 'bf*qme%ye=l&*9!7l$%x#^trp$cqztvnx7dw6fzf+fcuv=gl_&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = socket.gethostname() == 'SESDK258'
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
