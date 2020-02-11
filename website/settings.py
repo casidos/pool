@@ -22,11 +22,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'bf*qme%ye=l&*9!7l$%x#^trp$cqztvnx7dw6fzf+fcuv=gl_&'
 
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '']
 ADMINS = [('Lindsay', 'Lindsay.Sutherland@gmail.com')]
 MANAGERS = [('Lindsay', 'Lindsay.Sutherland@gmail.com')]
 EMAIL_HOST = 'localhost'
