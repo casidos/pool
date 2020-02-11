@@ -20,15 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'bf*qme%ye=l&*9!7l$%x#^trp$cqztvnx7dw6fzf+fcuv=gl_&'
-# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'bf*qme%ye=l&*9!7l$%x#^trp$cqztvnx7dw6fzf+fcuv=gl_&')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = socket.gethostname() == 'SESDK258'
 # DEBUG = True
 DEBUG = False
-# DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
@@ -41,8 +36,6 @@ EMAIL_HOST_USER = 'Lindsay.Sutherland@gmail.com'
 EMAIL_PORT = 1025
 
 # EMAIL_USE_TLS or _SSL − True if secure connection.
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -137,8 +130,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIR = (
     os.path.join(BASE_DIR, 'static'),
@@ -156,3 +151,7 @@ LOGIN_URL = 'login'
 # SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 DEFAULT_FROM_EMAIL = 'Lindsay.Sutherland@gmail.com'
+
+# import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
