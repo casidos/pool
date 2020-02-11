@@ -97,7 +97,7 @@ class TalkView(LoginRequiredMixin, TemplateView):
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 
-        args.update({'talk' : items})
+        # args.update({'talk' : items})
         args.update({'page_obj' : page_obj})
 
         return render(request, self.template_name, args) 
@@ -118,7 +118,7 @@ class TalkView(LoginRequiredMixin, TemplateView):
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 
-        args.update({'talk' : items})
+        # args.update({'talk' : items})
         args.update({'page_obj' : page_obj})
 
         return render(request, self.template_name, args) 
@@ -172,7 +172,7 @@ class NewsItemsView(LoginRequiredMixin, ListView):
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 
-        args.update({'items' : items})
+        # args.update({'items' : items})
         args.update({'page_obj' : page_obj})
 
         return render(request, self.template_name, args)
