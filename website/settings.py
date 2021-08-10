@@ -27,7 +27,7 @@ DEBUG = True
 # DEBUG = False
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'nflpool.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'toby-nfl.herokuapp.com']
 ADMINS = [('Lindsay', 'Lindsay.Sutherland@gmail.com')]
 MANAGERS = [('Lindsay', 'Lindsay.Sutherland@gmail.com')]
 EMAIL_HOST = 'localhost'
